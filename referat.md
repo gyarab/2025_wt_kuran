@@ -1,5 +1,5 @@
 # Alan Turing
-![Alan Mathison Turing](https://upload.wikimedia.org/wikipedia/commons/f/f8/Alan_Turing_%281951%29.jpg)
+![Zde je obrázek, toto vydíte protože se vám nenačetl. je zde obrázek Alana Mathisona Turinga](https://upload.wikimedia.org/wikipedia/commons/f/f8/Alan_Turing_%281951%29.jpg)
 
 [Alan Mathison Turing](https://en.wikipedia.org/wiki/Alan_Turing) (1912–1954) byl britský matematik, logik a odborník na kryptoanalýzu, který zásadně ovlivnil vznik moderní informatiky. Nejvíce se proslavil svým podílem na prolomení nacistických šifer, zejména Enigmy, během druhé světové války. V 50. letech byl odsouzen za svou homosexualitu podle tehdejších zákonů, ale v roce 2013 mu byla udělena posmrtná královská milost.
 
