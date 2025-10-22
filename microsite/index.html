@@ -8,67 +8,144 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-         :root {
-            --primary-color: navy;
-            --accent-color: #ffd700;
-            --text-color: #000;
-            --bg-color: #fff;
-            --navbar-height: 84px;
-        }
-        
-        [data-bs-theme="dark"] {
-            --primary-color: #1a1a5c;
-            --accent-color: #ffd700;
-            --text-color: #fff;
-            --bg-color: #000;
-        }
-        
-        body {
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            font-family: Arial, sans-serif;
-            padding-top: var(--navbar-height);
-        }
-        
-        .navbar {
-            background-color: var(--primary-color) !important;
-        }
-        
-        .navbar-brand,
-        .nav-link {
-            color: var(--accent-color) !important;
-        }
-        
-        .nav-link:hover {
-            color: white !important;
-        }
-        
-        .section {
-            min-height: 100vh;
-            padding: 80px 20px;
-            border-bottom: 2px solid var(--accent-color);
-            scroll-margin-top: calc(var(--navbar-height) + 0.5rem);
-        }
-        
-        h1,
-        h2 {
-            color: var(--primary-color);
-            margin-bottom: 30px;
-        }
-        
-        [data-bs-theme="dark"] h1,
-        [data-bs-theme="dark"] h2 {
-            color: var(--accent-color);
-        }
-        
-        .theme-switch {
-            cursor: pointer;
-            padding: 5px 10px;
-            border: 2px solid var(--accent-color);
-            border-radius: 5px;
-            color: var(--accent-color);
-            background: transparent;
-        }
+        :root {
+           --primary-color: navy;
+           --accent-color: #ffd700;
+           --text-color: #000;
+           --bg-color: #fff;
+           --navbar-height: 84px;
+           --navbar-color: #3a6caa;
+       }
+       
+       [data-bs-theme="dark"] {
+           --primary-color: #1a1a5c;
+           --accent-color: #ffd700;
+           --text-color: #fff;
+           --bg-color: #000;
+       }
+       
+       body {
+           color: var(--text-color);
+           background-color: var(--bg-color);
+           font-family: Arial, sans-serif;
+           padding-top: var(--navbar-height);
+       }
+       
+       .navbar {
+           background-color: var(--navbar-color) !important;
+       }
+       
+       .navbar-brand,
+       .nav-link {
+           color: var(--accent-color) !important;
+       }
+       
+       .nav-link:hover {
+           color: white !important;
+       }
+       
+       .section {
+           min-height: 100vh;
+           padding: 80px 20px;
+           border-bottom: 2px solid var(--accent-color);
+           scroll-margin-top: calc(var(--navbar-height) + 0.5rem);
+       }
+       
+       h1,
+       h2 {
+           color: var(--primary-color);
+           margin-bottom: 30px;
+       }
+       
+       [data-bs-theme="dark"] h1,
+       [data-bs-theme="dark"] h2 {
+           color: var(--accent-color);
+       }
+       
+       .theme-switch {
+           cursor: pointer;
+           padding: 5px 10px;
+           border: 2px solid var(--accent-color);
+           border-radius: 5px;
+           color: var(--accent-color);
+           background: transparent;
+       }
+
+       /* Výlety: horní polovina - různé foto pro light / dark režim */
+       .vylety-hero {
+           height: 50vh;
+           overflow: hidden;
+           border-radius: 6px;
+           margin-bottom: 1rem;
+       }
+       .vylety-hero img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           display: block;
+       }
+       .vylety-hero .light-only { display: block; }
+       .vylety-hero .dark-only { display: none; }
+       [data-bs-theme="dark"] .vylety-hero .light-only { display: none; }
+       [data-bs-theme="dark"] .vylety-hero .dark-only { display: block; }
+
+       .vylety-table { max-width: 900px; }
+       /* Brand block styles: navy + yellow palette */
+       /* Use existing variables: --primary-color (navy) and --accent-color (gold) */
+
+       .blok_navy {
+           background: linear-gradient(180deg, rgba(255,215,0,0.06), rgba(255,215,0,0.03)); /* subtle pale yellow */
+           border-left: 6px solid var(--primary-color); /* navy left accent */
+           padding: 1rem;
+           border-radius: 6px;
+           color: #073049; /* dark navy-ish text for readability */
+           margin-bottom: 1rem;
+       }
+
+       .nadpis_navy h2 {
+           display: inline-block;
+           background: var(--primary-color);
+           color: var(--accent-color);
+           padding: 0.25rem 0.6rem;
+           border-radius: 4px;
+       }
+
+       .text_zvyrazneny {
+           display: inline-block;
+           padding: 0.12rem 0.5rem;
+           background: rgba(7,48,73,0.06);
+           color: var(--primary-color);
+           font-weight: 700;
+           border-radius: 4px;
+           margin: 0.4rem 0;
+       }
+
+       .blok_navy a {
+           color: var(--primary-color);
+           font-weight: 600;
+           text-decoration: underline;
+       }
+
+       /* Dark mode adjustments to keep good contrast */
+       [data-bs-theme="dark"] .blok_navy {
+           background: linear-gradient(180deg, rgba(10,24,48,0.18), rgba(10,24,48,0.12)); /* darker bluish background */
+           border-left: 6px solid var(--accent-color); /* golden accent in dark mode */
+           color: #fff; /* use white text for best readability */
+       }
+
+       [data-bs-theme="dark"] .nadpis_navy h2 {
+           background: var(--accent-color);
+           color: var(--primary-color);
+       }
+
+       [data-bs-theme="dark"] .blok_navy a {
+           color: var(--accent-color);
+       }
+
+       [data-bs-theme="dark"] .text_zvyrazneny {
+           color: var(--accent-color);
+           background: rgba(255,215,0,0.12);
+       }
     </style>
 </head>
 
@@ -77,13 +154,13 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="/home/vlada/Git/Koco/kocovnici.cz/prototyp/logo.png" alt="Logo Kočovníci" style="height:40px; margin-right:10px;">
+                <img src="logo.png" alt="Logo Kočovníci" style="height:40px; margin-right:10px;">
                 <div class="flex-grow-1 d-flex justify-content-center align-items-center" style="height:84px;">
                     <span class="navbar-text" style="font-size:1.25rem; font-weight:600; color:var(--accent-color);">
                         49. PS Kočovníci
                     </span>
                 </div>
-                <img src="/home/vlada/Git/Koco/kocovnici.cz/prototyp/logopionyr.svg" alt="Logo Pionýr" style="height:36px;" class="ms-2 d-none d-md-inline">
+                <img src="logopionyr.png" alt="Logo Pionýr" style="height:36px;" class="ms-2 d-none d-md-inline">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -129,6 +206,47 @@
     <section id="vylety" class="section">
         <div class="container">
 
+            <!-- lightmode = foto1 darkmode = foto2 -->
+            <div class="vylety-hero">
+                <img src="foto1.jpg" alt="Výlety (denní foto)" class="light-only">
+                <img src="foto2.jpg" alt="Výlety (noční foto)" class="dark-only">
+            </div>
+
+            <!-- tabulka na výlet -->
+            <div class="table-responsive">
+                <table class="table table-bordered vylety-table">
+                    <tbody>
+                        <tr>
+                            <th style="width:220px">Datum</th>
+                            <td>12. 10. 2025</td>
+                        </tr>
+                        <tr>
+                            <th>Trasa</th>
+                            <td>Karlštejn</td>
+                        </tr>
+                        <tr>
+                            <th>Sraz</th>
+                            <td>8:30, Hlavní nádraží</td>
+                        </tr>
+                        <tr>
+                            <th>Cena</th>
+                            <td>150 Kč</td>
+                        </tr>
+                        <tr>
+                            <th>Vedoucí</th>
+                            <td>Jan Novák</td>
+                        </tr>
+                        <tr>
+                            <th>S sebou</th>
+                            <td>Batoh, svačina, pití, pohodlná obuv, pláštěnka</td>
+                        </tr>
+                        <tr>
+                            <th>Poznámka</th>
+                            <td>Pojeďte s námi na jednodenní výlet na Karlštejn. Prosím hlašte se na novak@kocovnici.cz do 10.10.2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
@@ -136,8 +254,10 @@
     <section id="onas" class="section">
         <div class="container">
             <h1>O nás</h1>
-            <div class="blok_orange">
-                <h2>Kdo Jsme?</h2>
+            <div class="nadpis_navy">
+                <h2>Kdo jsme?</h2>
+            </div>
+                <div class="blok_navy">
                 <p>
                     Jsme dětský oddíl s tradicí od roku 1977 zaměřený na turistiku a tábornictví.
                 </p>
@@ -167,9 +287,9 @@
                 <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2015.pdf" title="Výroční zpráva 2015">2015</a>
                 <p></p>
             </div>
-            <div class="nadpis_orange">
+            <div class="nadpis_navy">
                 <h2>Co děláme?</h2>
-                <div class="blok_orange">
+                <div class="blok_navy">
                     <p>
                     </p>
                     <h3>Družinové schůzky</h3>
@@ -194,9 +314,9 @@
                     s vařením či nočními hlídkami.
                     <p></p>
                 </div>
-                <div class="blok_orange">
+                <div class="blok_navy">
                     <h2>Máte zájem?</h2>
-                    <div class="blok_orange">
+                    <div class="blok_navy">
                         Napište nám e-mail na adresu <a href="mailto:info@kocovnici.cz">info@kocovnici.cz</a> nebo se podívejte na <a href="index.php?pg=druziny" title="Přehled oddílových družin">přehled družin</a> a po domluvě se můžete přijít podívat
                         na schůzku.
                     </div>
@@ -206,8 +326,186 @@
     <!-- Sekce Členové -->
     <section id="clenove" class="section">
         <div class="container">
+            <h4>Členské příspěvky</h4>
+                <p>Výše členského příspěvku je stanovena na 800 Kč na člena na rok.</p>
             <h2>Členové</h2>
-            <p>Seznam našich členů a vedoucích...</p>
+
+            <h3>Družinky</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered vylety-table">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Družina</th>
+                            <th>Věk</th>
+                            <th>Čas schůzek</th>
+                            <th>Vedoucí</th>
+                            <th>Spojení</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jeleni</td>
+                            <td>12-15</td>
+                            <td>pondělí 17:30 - 19:30</td>
+                            <td>Matylda, Honza</td>
+                            <td>
+                                matylda@kocovnici.cz<br>
+                                733 443 136
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Luskouni</td>
+                            <td>6-9</td>
+                            <td>úterý 17:00 - 19:00</td>
+                            <td>Eliška, Lukáš, Kuba</td>
+                            <td>
+                                eliska@kocovnici.cz<br>
+                                792 334 142
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Medvědi</td>
+                            <td>8-12</td>
+                            <td>čtvrtek 16:00 - 18:00</td>
+                            <td>Marcel, Jirka</td>
+                            <td>
+                                marcel@kocovnici.cz<br>
+                                777 937 167
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="mt-4">Vedoucí</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped vylety-table">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Přezdívka</th>
+                            <th>Jméno</th>
+                            <th>E-mail</th>
+                            <th>Telefon</th>
+                            <th>Poznámka</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Marcel</td>
+                            <td>Marcel Šíp</td>
+                            <td>marcel@kocovnici.cz</td>
+                            <td>777 937 167</td>
+                            <td>hl. vedoucí</td>
+                        </tr>
+                        <tr>
+                            <td>Zůza</td>
+                            <td>Zuzana Baziková</td>
+                            <td>zuza@kocovnici.cz</td>
+                            <td></td>
+                            <td>hospodář</td>
+                        </tr>
+                        <tr>
+                            <td>Lukáš</td>
+                            <td>Lukáš Chochlovský</td>
+                            <td>lukas@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Kačka</td>
+                            <td>Kateřina Repková</td>
+                            <td>kacka@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Blatník</td>
+                            <td>Marek Šafra</td>
+                            <td>blatnik@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Lucka</td>
+                            <td>Lucie Řípová</td>
+                            <td>lucka@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Eliška</td>
+                            <td>Eliška Kuráňová</td>
+                            <td>eliska@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Matylda</td>
+                            <td>Matylda Štindlová</td>
+                            <td>matylda@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Žofka</td>
+                            <td>Žofie Kaliničová</td>
+                            <td>zofka@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Lukáš</td>
+                            <td>Lukáš Řípa</td>
+                            <td>lukas2@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Honza</td>
+                            <td>Jan Sklenka</td>
+                            <td>honza@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Vláďa</td>
+                            <td>Vladimír Kuráň</td>
+                            <td>vlada@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Kuba</td>
+                            <td>Jakub Pospíšil</td>
+                            <td>kuba@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Julča</td>
+                            <td>Julie Novotná</td>
+                            <td>julca@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Jirka</td>
+                            <td>Jiří Bertien</td>
+                            <td>jirka@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Greta</td>
+                            <td>Margareta Landová</td>
+                            <td>greta@kocovnici.cz</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </section>
 
@@ -215,17 +513,67 @@
     <section id="plan" class="section">
         <div class="container">
             <h2>Plán akcí</h2>
-            <p>Kalendář našich plánovaných aktivit...</p>
+            <h3>Plán akcí na školní rok 2025/2026</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered vylety-table">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Název</th>
+                            <th>Datum</th>
+                            <th>Info</th>
+                            <th>Fotky</th>
+                            <th>Článek</th>
+                            <th>Video</th>
+                            <th>Vedoucí</th>
+                        </tr>
+                    </thead>
+                    <tbody id="plan-akci-tbody">
+                        <!-- řádky budou generovány JS -->
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-between mt-3">
+                    <button class="btn btn-primary" id="plan-akci-prev" onclick="planAkciPrev()">Zpět</button>
+                    <button class="btn btn-primary" id="plan-akci-next" onclick="planAkciNext()">Další</button>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Sekce Fotky -->
     <section id="fotky" class="section">
         <div class="container">
-            <h2>Fotky</h2>
-            <p>Fotogalerie z našich akcí...</p>
+            <div class="row justify-content-center text-center mb-4">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold">
+                        <a href="https://kocovnici.rajce.idnes.cz" target="_blank" style="color:inherit;text-decoration:underline;">Fotky</a>
+                    </h2>
+                    <p class="text-muted">Fotky z našich akcí. Nadpis vede na Rajče.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-6 col-md-4">
+                    <img src="foto1.jpg" alt="Fotka 1" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                </div>
+                <div class="col-6 col-md-4">
+                    <img src="foto2.jpg" alt="Fotka 2" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                </div>
+                <div class="col-6 col-md-4">
+                    <img src="foto3.jpg" alt="Fotka 3" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                </div>
+                <div class="col-6 col-md-4">
+                    <img src="foto4.jpg" alt="Fotka 4" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                </div>
+                <div class="col-6 col-md-4">
+                    <img src="foto5.jpg" alt="Fotka 5" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                </div>
+                <div class="col-6 col-md-4">
+                    <img src="foto6.jpg" alt="Fotka 6" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Gallery Lightbox (Bootstrap Modal + Carousel) -->
 
     <!-- Sekce Odborky -->
     <section id="odborky" class="section">
@@ -261,6 +609,9 @@
 
     <!-- Theme Toggle Script -->
     <script>
+        // ...ostatní JS ponechán, galerie JS odstraněn...
+    </script>
+    <script>
         function toggleTheme() {
             const html = document.documentElement;
             if (html.getAttribute('data-bs-theme') === 'dark') {
@@ -278,14 +629,81 @@
 
         window.addEventListener('load', function() {
             updateNavbarHeight();
+            renderPlanAkciTable();
         });
 
         window.addEventListener('resize', function() {
             updateNavbarHeight();
         });
+
+        // Data pro plán akcí
+        const planAkciData = [
+            {nazev:'Jednodenní výlet',datum:'27.9.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Marcel, Jirka, Julča'},
+            {nazev:'72 hodin',datum:'11.10.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Blatník, Greta'},
+            {nazev:'Podzimní prázdniny',datum:'24.10. - 29.10.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lucka, Eliška'},
+            {nazev:'Hra po Praze',datum:'22.11.',info:'',fotky:'',clanek:'',video:'',vedouci:'Matylda, Honza'},
+            {nazev:'Deskohraní',datum:'23.11.',info:'',fotky:'',clanek:'',video:'',vedouci:'Lukáš Ch.'},
+            {nazev:'Vánoční besídka',datum:'12.12. - 14.12.',info:'',fotky:'',clanek:'',video:'',vedouci:'Lukáš Ch., Kuba'},
+            {nazev:'Jednodenní výlet',datum:'17.1.',info:'',fotky:'',clanek:'',video:'',vedouci:'Vláďa'},
+            {nazev:'Ledová města',datum:'29.1. - 1.2.',info:'',fotky:'',clanek:'',video:'',vedouci:'Blatník, Žofka'},
+            {nazev:'Jarní tábor',datum:'21.2. - 28.2.',info:'',fotky:'',clanek:'',video:'',vedouci:'Marcel, Eliška'},
+            {nazev:'Výlet',datum:'27.3. - 29.3.',info:'',fotky:'',clanek:'',video:'',vedouci:'Kačka, Lucka'},
+            {nazev:'Školení vedoucích',datum:'10.4. - 12.4.',info:'',fotky:'',clanek:'',video:'',vedouci:'Marcel'},
+            {nazev:'Jednodenní výlet',datum:'18.4.',info:'',fotky:'',clanek:'',video:'',vedouci:'Honza, Kuba'},
+            {nazev:'Výlet',datum:'7.5. - 10.5.',info:'',fotky:'',clanek:'',video:'',vedouci:'Matylda, Žofka'},
+            {nazev:'Výlet pro starší',datum:'29.5. - 31.5.',info:'',fotky:'',clanek:'',video:'',vedouci:'Julča, Greta'},
+            {nazev:'50. Oheň',datum:'12.6. - 14.6.',info:'',fotky:'',clanek:'',video:'',vedouci:'Blatník, Vláďa, Jirka'},
+            {nazev:'Letní tábor',datum:'3.7. - 19.7.',info:'',fotky:'',clanek:'',video:'',vedouci:'Všichni'},
+            {nazev:'Voda (vedoucí, instruktoři)',datum:'6.9. - 8.9.',info:'',fotky:'',clanek:'',video:'',vedouci:'Klára'},
+            {nazev:'Jednodenní výlet',datum:'21.9.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Vláďa, Damík'},
+            {nazev:'Školení vedoucích',datum:'4.10. - 6.10.',info:'',fotky:'',clanek:'',video:'',vedouci:'Marcel'},
+            {nazev:'72 hodin',datum:'12.10.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Blatník, Honza'},
+            {nazev:'Podzimní prázdniny',datum:'25.10. - 30.10.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lucka, Eliška, Lukáš Ř.'},
+            {nazev:'Hra po Praze',datum:'23.11.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Kačka, Matylda'},
+            {nazev:'Filmový maraton',datum:'23.11. - 24.11.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Kačka, Matylda'},
+            {nazev:'Deskohraní',datum:'1.12.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lukáš Ch., Kuba, Julča'},
+            {nazev:'Vánoční besídka',datum:'13.12. - 15.12.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lukáš Ch., Jirka'},
+            {nazev:'Jednodenní výlet',datum:'11.1.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Žofka'},
+            {nazev:'Jarní tábor',datum:'15.2. - 22.2.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Marcel, Klára, Lukáš Ř.'},
+            {nazev:'Jednodenní výlet',datum:'22.3.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lucka, Vláďa'},
+            {nazev:'Výlet',datum:'11.4. - 13.4.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Kačka, Honza, Jirka'},
+            {nazev:'Výlet pro starší',datum:'2.5. - 4.5.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Matylda, Damík'},
+            {nazev:'Republikové setkání Pionýra',datum:'23.5. - 25.5.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Eliška, Kuba'},
+            {nazev:'49. Oheň',datum:'13.6. - 15.6.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Blatník, Žofka, Julča'},
+            {nazev:'Letní tábor',datum:'27.6. - 13.7.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Marcel, Lukáš Ch.'}
+        ];
+        let planAkciPage = 0;
+        const planAkciPageSize = 10;
+
+        function renderPlanAkciTable() {
+            const tbody = document.getElementById('plan-akci-tbody');
+            tbody.innerHTML = '';
+            const start = planAkciPage * planAkciPageSize;
+            const end = Math.min(start + planAkciPageSize, planAkciData.length);
+            for (let i = start; i < end; i++) {
+                const row = planAkciData[i];
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${row.nazev}</td><td>${row.datum}</td><td>${row.info}</td><td>${row.fotky}</td><td>${row.clanek}</td><td>${row.video}</td><td>${row.vedouci}</td>`;
+                tbody.appendChild(tr);
+            }
+            document.getElementById('plan-akci-prev').disabled = planAkciPage === 0;
+            document.getElementById('plan-akci-next').disabled = end >= planAkciData.length;
+        }
+
+        function planAkciPrev() {
+            if (planAkciPage > 0) {
+                planAkciPage--;
+                renderPlanAkciTable();
+            }
+        }
+        function planAkciNext() {
+            if ((planAkciPage + 1) * planAkciPageSize < planAkciData.length) {
+                planAkciPage++;
+                renderPlanAkciTable();
+            }
+        }
     </script>
-    } }
-    </script>
+    
 </body>
 
 </html>
