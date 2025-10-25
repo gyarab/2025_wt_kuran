@@ -30,9 +30,27 @@
            font-family: Arial, sans-serif;
            padding-top: var(--navbar-height);
        }
-       
+        footer {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        border-top: 2px solid var(--accent-color);
+        transition: background-color 0.3s, color 0.3s;
+        }
+
+        footer.bg-light {
+        background-color: var(--bg-color) !important;
+        color: var(--text-color) !important;
+        }
+
+        [data-bs-theme="dark"] footer {
+        background-color: var(--primary-color) !important;
+        color: var(--accent-color) !important;
+        border-top-color: var(--accent-color);
+        }
+
+
        .navbar {
-           background-color: var(--navbar-color) !important;
+           background-color: var(--primary-color) !important;
        }
        
        .navbar-brand,
@@ -51,6 +69,10 @@
            scroll-margin-top: calc(var(--navbar-height) + 0.5rem);
        }
        
+       .section:last-of-type {
+        border-bottom: none;
+        }
+
        h1,
        h2 {
            color: var(--primary-color);
@@ -104,8 +126,7 @@
 
        .nadpis_navy h2 {
            display: inline-block;
-           background: var(--primary-color);
-           color: var(--accent-color);
+           color: var(--primary-color);
            padding: 0.25rem 0.6rem;
            border-radius: 4px;
        }
@@ -377,167 +398,89 @@
                 </table>
             </div>
 
-            <h3 class="mt-4">Vedoucí</h3>
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped vylety-table">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Přezdívka</th>
-                            <th>Jméno</th>
-                            <th>E-mail</th>
-                            <th>Telefon</th>
-                            <th>Poznámka</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Marcel</td>
-                            <td>Marcel Šíp</td>
-                            <td>marcel@kocovnici.cz</td>
-                            <td>777 937 167</td>
-                            <td>hl. vedoucí</td>
-                        </tr>
-                        <tr>
-                            <td>Zůza</td>
-                            <td>Zuzana Baziková</td>
-                            <td>zuza@kocovnici.cz</td>
-                            <td></td>
-                            <td>hospodář</td>
-                        </tr>
-                        <tr>
-                            <td>Lukáš</td>
-                            <td>Lukáš Chochlovský</td>
-                            <td>lukas@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Kačka</td>
-                            <td>Kateřina Repková</td>
-                            <td>kacka@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Blatník</td>
-                            <td>Marek Šafra</td>
-                            <td>blatnik@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Lucka</td>
-                            <td>Lucie Řípová</td>
-                            <td>lucka@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Eliška</td>
-                            <td>Eliška Kuráňová</td>
-                            <td>eliska@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Matylda</td>
-                            <td>Matylda Štindlová</td>
-                            <td>matylda@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Žofka</td>
-                            <td>Žofie Kaliničová</td>
-                            <td>zofka@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Lukáš</td>
-                            <td>Lukáš Řípa</td>
-                            <td>lukas2@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Honza</td>
-                            <td>Jan Sklenka</td>
-                            <td>honza@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Vláďa</td>
-                            <td>Vladimír Kuráň</td>
-                            <td>vlada@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Kuba</td>
-                            <td>Jakub Pospíšil</td>
-                            <td>kuba@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Julča</td>
-                            <td>Julie Novotná</td>
-                            <td>julca@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Jirka</td>
-                            <td>Jiří Bertien</td>
-                            <td>jirka@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Greta</td>
-                            <td>Margareta Landová</td>
-                            <td>greta@kocovnici.cz</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div id="vedouci-tabulka"></div>
+
+            
 
         </div>
     </section>
 
     <!-- Sekce Plán akcí -->
-    <section id="plan" class="section">
-        <div class="container">
-            <h2>Plán akcí</h2>
-            <h3>Plán akcí na školní rok 2025/2026</h3>
-            <div class="table-responsive">
-                <table class="table table-bordered vylety-table">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Název</th>
-                            <th>Datum</th>
-                            <th>Info</th>
-                            <th>Fotky</th>
-                            <th>Článek</th>
-                            <th>Video</th>
-                            <th>Vedoucí</th>
-                        </tr>
-                    </thead>
-                    <tbody id="plan-akci-tbody">
-                        <!-- řádky budou generovány JS -->
-                    </tbody>
-                </table>
-                <div class="d-flex justify-content-between mt-3">
-                    <button class="btn btn-primary" id="plan-akci-prev" onclick="planAkciPrev()">Zpět</button>
-                    <button class="btn btn-primary" id="plan-akci-next" onclick="planAkciNext()">Další</button>
-                </div>
+<section id="plan" class="section">
+    <div class="container">
+        <h2>Plán akcí</h2>
+        <h3>Plán akcí na školní rok 2025/2026</h3>
+
+        <div class="table-responsive">
+            <table class="table table-bordered vylety-table">
+                <thead class="table-light">
+                    <tr>
+                        <th>Název</th>
+                        <th>Datum</th>
+                        <th>Info</th>
+                        <th>Fotky</th>
+                        <th>Článek</th>
+                        <th>Video</th>
+                        <th>Vedoucí</th>
+                    </tr>
+                </thead>
+                <tbody id="plan-akci-tbody">
+                    <!-- řádky budou načteny z planAkciData.js -->
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between mt-3">
+                <button class="btn btn-primary" id="plan-akci-prev" onclick="planAkciPrev()">Zpět</button>
+                <button class="btn btn-primary" id="plan-akci-next" onclick="planAkciNext()">Další</button>
             </div>
         </div>
-    </section>
+    </div>
+
+    <script src="planAkciData.js"></script>
+    <script>
+        let planAkciPage = 0;
+        const planAkciPageSize = 10;
+
+        function renderPlanAkciTable() {
+            const tbody = document.getElementById('plan-akci-tbody');
+            tbody.innerHTML = '';
+            const start = planAkciPage * planAkciPageSize;
+            const end = Math.min(start + planAkciPageSize, planAkciData.length);
+            for (let i = start; i < end; i++) {
+                const row = planAkciData[i];
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.nazev}</td>
+                    <td>${row.datum}</td>
+                    <td>${row.info}</td>
+                    <td>${row.fotky}</td>
+                    <td>${row.clanek}</td>
+                    <td>${row.video}</td>
+                    <td>${row.vedouci}</td>
+                `;
+                tbody.appendChild(tr);
+            }
+            document.getElementById('plan-akci-prev').disabled = planAkciPage === 0;
+            document.getElementById('plan-akci-next').disabled = end >= planAkciData.length;
+        }
+
+        function planAkciPrev() {
+            if (planAkciPage > 0) {
+                planAkciPage--;
+                renderPlanAkciTable();
+            }
+        }
+
+        function planAkciNext() {
+            if ((planAkciPage + 1) * planAkciPageSize < planAkciData.length) {
+                planAkciPage++;
+                renderPlanAkciTable();
+            }
+        }
+
+        window.addEventListener('load', renderPlanAkciTable);
+    </script>
+</section>
+
 
     <!-- Sekce Fotky -->
     <section id="fotky" class="section">
@@ -547,7 +490,7 @@
                     <h2 class="fw-bold">
                         <a href="https://kocovnici.rajce.idnes.cz" target="_blank" style="color:inherit;text-decoration:underline;">Fotky</a>
                     </h2>
-                    <p class="text-muted">Fotky z našich akcí. Nadpis vede na Rajče.</p>
+                <p class="text-muted">Fotky z našich akcí. Nadpis vede na <a href="https://kocovnici.rajce.idnes.cz" target="_blank">Rajče</a>.</p>
                 </div>
             </div>
             <div class="row g-4">
@@ -579,131 +522,328 @@
     <section id="odborky" class="section">
         <div class="container">
             <h2>Odborky</h2>
-            <p>Informace o odznacích odbornosti...</p>
+
+            <div class="blok_navy">
+                <h3>Přehled a pravidla</h3>
+                <p>
+                    Odborky představují soubor znalostí, které by měl každý člen oddílu nabýt před pasováním na instruktora.
+                    <br>
+                    <a href="https://kocovnici.cz/odborky/odborky_podminky_v2.pdf">Pravidla plnění a přehled všech odborek</a>
+                </p>
+                <p>
+                    Každá odborka má čtyři stupně (1. – nejlehčí, 4. – nejtěžší). Jednotlivé stupně lze plnit postupně,
+                    nicméně kdo chce splnit např. 3. stupeň, musí již mít 1. a 2. stupeň téže odborky
+                    (případně splnit 1.–3. najednou).
+                </p>
+                <p>
+                    Splnění stupně odborky je odměněno získáním odznáčku odpovídajícího stupně a 3 body do bodování.
+                </p>
+
+                <h4>Podmínky pro šátkování</h4>
+                <p>
+                    Podmínkou pro šátkování je získání alespoň 5 stupňů libovolných odborek, tj. např.:
+                </p>
+                <ul>
+                    <li>prvních stupňů různých odborek</li>
+                    <li>jednoho třetího stupně jedné odborky a jednoho druhého stupně jiné odborky</li>
+                </ul>
+
+                <h4>Podmínky pro pasování na instruktora</h4>
+                <p>
+                    Podmínkou pro pasování na instruktora je splnění všech třetích stupňů a jednoho vybraného čtvrtého stupně.
+                </p>
+            </div>
+
+            <div class="blok_navy mt-4">
+                <h3>Listy jednotlivých odborek</h3>
+                <ul>
+                    <li><a href= "https://kocovnici.cz/odborky/hvezdar.pdf">Hvězdář</a></li>
+                    <li><a href= "https://kocovnici.cz/odborky/kuchar.pdf">Kuchař</a></li>
+                    <li><a href= "https://kocovnici.cz/odborky/morse.pdf">Morse</a></li>
+                    <li><a href= "https://kocovnici.cz/odborky/prirodovedec.pdf">Přírodovědec</a></li>
+                    <li><a href= "https://kocovnici.cz/odborky/sportovec.pdf">Sportovec</a></li>
+                    <li><a href= "https://kocovnici.cz/odborky/tabornik.pdf">Táborník</a></li>
+                    <li><a href= "https://kocovnici.cz/odborky/topograf.pdf">Topograf</a></li>
+                    <li><a href= "https://kocovnici.cz/odborky/uzlar.pdf">Uzlař</a></li>
+                    <li><a href= "https://kocovnici.cz/odborky/zdravotnik.pdf">Zdravotník</a></li>
+                </ul>
         </div>
     </section>
+
 
     <!-- Sekce Tábory -->
-    <section id="tabory" class="section">
-        <div class="container">
-            <h2>Tábory</h2>
-            <p>Informace o našich táborech...</p>
-        </div>
-    </section>
+<section id="tabory" class="section">
+  <div class="container">
+    <h2>Tábory</h2>
+    <p>
+      Každoročně pořádáme zimní tábor na horách v termínu jarních prázdnin Prahy 6
+      a letní stanový tábor prvních 14 dní v červenci. Tábory a činnost oddílu
+      finančně podporují Hlavní město Praha, Městská část Praha 6 a Ministerstvo
+      školství, mládeže a tělovýchovy.
+    </p>
+
+    <p>
+      <strong>Hlavní město Praha</strong> |
+      <strong>Městská část Praha 6</strong> |
+      <strong>Ministerstvo školství, mládeže a tělovýchovy</strong>
+    </p>
+
+    <h3>Letní tábor Ronovec 2025</h3>
+    <p>
+      <strong>Termín:</strong> 27.6. – 13.7.2025<br>
+      <strong>Sraz:</strong> 27.6. 16:30 u klubovny<br>
+      <strong>Návrat:</strong> 13.7. 13:55 na Hlavní nádraží
+    </p>
+
+    <h4>Návštěvní den pro rodiče</h4>
+    <p>
+      Chystáte-li se přijet podívat a případně si děti odvézt, můžete přijet už v sobotu 12.7.
+      přes den, vzít si stan a přespat do neděle. V sobotu proběhne zakončení
+      celotáborové hry, oficiální konec tábora bude v neděli dopoledne po zabalení a úklidu.
+    </p>
+
+    <h4>Lokalita</h4>
+    <p>
+      Jedeme na již vyzkoušené tábořiště u hradu Ronovec nedaleko Havlíčkova Brodu.
+      Samotný tábor vzniká doslova na zelené louce – stany i další potřebné vybavení si
+      stavíme sami s ohledem na požadované hygienické normy. Na stavbě se podílí všichni
+      účastníci, přiměřeně věku a schopnostem.
+    </p>
+
+    <h4>Program</h4>
+    <p>
+      V rámci celotáborové hry nás čeká spousta různorodých her a aktivit – od bojovek v přírodě
+      přes různé dovednostní aktivity až po krátké hříčky pro pobavení. Ani sportovní vyžití
+      nevynecháme: fotbal, vybíjená, ringo, frisbee, lakros. Za slunečného počasí dojde na koupání,
+      ale máme připravenou zásobu aktivit i pro případ deště. Součástí běžného táborového života
+      jsou i noční hlídky, služby v kuchyni a táboráky. Vydáme se i na vícedenní výlet po okolí.
+    </p>
+
+    <h4>Ubytování a stravování</h4>
+    <p>
+      Bydlet se bude po dvou v podsadových stanech. Spí se na postelích ve vlastních spacácích.
+      Jídlo je pětkrát denně z vlastní polní kuchyně, tekutiny jsou k dispozici po celý den.
+    </p>
+
+    <h4>Vedoucí</h4>
+    <p>
+      Vedoucí v našem oddíle vyrostli, takže dobře vědí, jaké je to být dítětem na táboře.
+      S dětmi pracujeme po celý rok, máme mnohaleté zkušenosti a pravidelně se proškolujeme.
+      Po celou dobu tábora je k dispozici zdravotník. Tábor pořádáme dobrovolně, bez nároků
+      na odměnu.
+    </p>
+
+    <p>
+      <strong>Cena:</strong> 3500 Kč pro členy, 4000 Kč pro veřejnost<br>
+      <em>Cena pro členy se týká členů oddílu se zaplacenými příspěvky.</em>
+    </p>
+
+    <h4>Kontakt na tábor</h4>
+    <p>
+      <strong>E-mail:</strong> <a href="mailto:info@kocovnici.cz">info@kocovnici.cz</a><br>
+      <strong>Telefon:</strong> 777 937 167 (hlavní vedoucí Marcel Šíp)
+    </p>
+
+    <h4>Co si vzít s sebou</h4>
+    <ul>
+      <li>vybavení podle doporučeného seznamu</li>
+      <li>páteční večeři (společně vaříme až od sobotní snídaně)</li>
+    </ul>
+
+    <h4>Dokumenty</h4>
+    <ul>
+      <li>potvrzení o způsobilosti od dětského lékaře (platí 2 roky)</li>
+      <li>kopii kartičky pojištěnce</li>
+      <li>prohlášení o bezinfekčnosti (ne starší než 1 den před odjezdem)</li>
+    </ul>
+
+    <h4>Adresa tábora</h4>
+    <p>
+      <strong>Letní tábor Kočovníci</strong><br>
+      Dolní Krupá u Havlíčkova Brodu<br>
+      582 71<br>
+      <strong>Táborový telefon:</strong> 731 261 239 (pouze pro naléhavé případy)
+    </p>
+
+    <h4>Platba</h4>
+    <p>
+      Účastnický poplatek pošlete převodem na účet <strong>2700230041/2010</strong>.<br>
+      Pokud potřebujete fakturu, pošlete nám fakturační údaje na e-mail.
+    </p>
+
+    <p>
+      <strong>QR platba pro členy (3500 Kč)</strong><br>
+      <strong>QR platba pro ostatní (4000 Kč)</strong>
+    </p>
+  </div>
+</section>
+
 
     <!-- Sekce Historie -->
-    <section id="historie" class="section">
-        <div class="container">
-            <h2>Historie</h2>
-            <p>Historie našeho oddílu...</p>
+<section id="historie" class="section">
+    <div class="container">
+        <h2>Historie oddílu</h2>
+        <h3>Tradice od roku 1977</h3>
+
+        <div class="blok_navy mb-4">
+            <p>
+                Historie oddílu <strong>Kočovníci</strong> se píše od roku <strong>1977</strong>,
+                kdy došlo k jeho vzniku sloučením oddílů <strong>Moby-Dick</strong> a <strong>Panteři</strong>.
+                Za dobu existence jsme uspořádali přes <strong>600 výletů</strong> a během letních táborů
+                vystřídali řadu tábořišť – viz přehled táborů níže.
+            </p>
+            <p><a href="listina.jpg">Zakládací listina</a></p>
         </div>
-    </section>
+
+        <div class="blok_navy mb-4">
+            <h4>Kde najdu víc informací?</h4>
+            <p>
+                Více historických fotek najdete v albech na Facebooku, která vznikla u příležitosti
+                <strong>40 let oddílu</strong>:
+            </p>
+            <ul>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1394129610652873">Oddílová historie I. – 1977–84</a></li>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1433152330083934">Oddílová historie II. – 1983–88</a></li>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1461882500544250">Oddílová historie III. – 1989–94</a></li>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1469832193082614">Oddílová historie IV. – 1995–2000</a></li>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1478834575515709">Oddílová historie V. – 2003–2009</a></li>
+            </ul>
+            <p>
+                Od roku 2003 najdete fotky a videa na našich stránkách.<br>
+                Od roku 2011 v naší fotogalerii na
+                <a href="https://kocovnici.rajce.idnes.cz" target="_blank">Rajčeti</a>.<br>
+                A mezi léty 2002–2010 si z plánu akcí můžete otevřít článek z daného výletu.
+            </p>
+        </div>
+
+        <h3>Přehled táborů</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered vylety-table">
+                <thead class="table-light">
+                    <tr>
+                        <th>Rok</th>
+                        <th>Místo</th>
+                        <th>Téma hry</th>
+                    </tr>
+                </thead>
+                <tbody id="tabory-tbody">
+                    <!-- řádky budou načteny z taboryData.js -->
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between mt-3">
+                <button class="btn btn-primary" id="tabory-prev" onclick="taboryPrev()">Zpět</button>
+                <button class="btn btn-primary" id="tabory-next" onclick="taboryNext()">Další</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="taboryData.js"></script>
+    <script>
+        let taboryPage = 0;
+        const taboryPageSize = 8;
+
+function renderTaboryTable() {
+    const tbody = document.getElementById('tabory-tbody');
+    tbody.innerHTML = '';
+    const start = taboryPage * taboryPageSize;
+    const end = Math.min(start + taboryPageSize, taboryData.length);
+
+    // skutečné řádky s daty
+    for (let i = start; i < end; i++) {
+        const t = taboryData[i];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${t.rok}</td><td>${t.misto}</td><td>${t.tema}</td>`;
+        tbody.appendChild(tr);
+    }
+
+    // doplnit prázdné řádky do 8
+    for (let i = end; i < start + 8; i++) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>&nbsp;</td><td></td><td></td>`;
+        tbody.appendChild(tr);
+    }
+
+    // tlačítka
+    document.getElementById('tabory-prev').disabled = taboryPage === 0;
+    document.getElementById('tabory-next').disabled = end >= taboryData.length;
+}
+
+
+
+        function taboryPrev() {
+            if (taboryPage > 0) {
+                taboryPage--;
+                renderTaboryTable();
+            }
+        }
+
+        function taboryNext() {
+            if ((taboryPage + 1) * taboryPageSize < taboryData.length) {
+                taboryPage++;
+                renderTaboryTable();
+            }
+        }
+
+        window.addEventListener('load', renderTaboryTable);
+    </script>
+</section>
+
 
     <!-- Sekce Kontakty -->
-    <section id="kontakty" class="section">
-        <div class="container">
-            <h2>Kontakty</h2>
-            <p>Kontaktní informace na vedoucí oddílu...</p>
+<section id="kontakty" class="section">
+    <div class="container">
+        <h2>Kontakty</h2>
+        <div class="blok_navy">
+            <h3>Pionýr, z. s. – 49. pionýrská skupina Kočovníci</h3>
+            <p>
+                <strong>IČO:</strong> 66005752<br>
+                <strong>Účet:</strong> 2700230041/2010<br>
+                <strong>Datová schránka:</strong> s4s5ecn
+            </p>
+            <p>
+                <strong>Adresa klubovny:</strong><br>
+                Nad Panenskou 5, Praha 6
+            </p>
+            <p>
+                <strong>Tel.:</strong> <a href="tel:+420731261239">731 261 239</a><br>
+                <strong>E-mail:</strong> <a href="mailto:info@kocovnici.cz">info@kocovnici.cz</a>
+            </p>
         </div>
-    </section>
 
-    <!-- Theme Toggle Script -->
-    <script>
-        // ...ostatní JS ponechán, galerie JS odstraněn...
-    </script>
-    <script>
-        function toggleTheme() {
-            const html = document.documentElement;
-            if (html.getAttribute('data-bs-theme') === 'dark') {
-                html.removeAttribute('data-bs-theme');
-            } else {
-                html.setAttribute('data-bs-theme', 'dark');
-            }
-        }
+        <div class="mt-4">
+            <h3>Kde nás najdete</h3>
+            <p>Na mapě níže si můžete zobrazit naši klubovnu:</p>
+            <div class="ratio ratio-16x9">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.331561789803!2d14.393273977045174!3d50.09949297152214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94843a50de3d%3A0xa7134f4d35c6c2a!2sNad%20Panenskou%205%2C%20160%2000%20Praha%206-Dejvice!5e0!3m2!1scs!2scz!4v1729638170665!5m2!1scs!2scz" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
 
-        function updateNavbarHeight() {
-            const nav = document.querySelector('.navbar');
-            const height = nav ? nav.offsetHeight : 0;
-            document.documentElement.style.setProperty('--navbar-height', height + 'px');
-        }
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <p class="text-center">&copy; Všchna práva vyhrazena atd...</p>
+        </div>
+    </footer>
 
-        window.addEventListener('load', function() {
-            updateNavbarHeight();
-            renderPlanAkciTable();
-        });
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="themeToggle.js"></script>
 
-        window.addEventListener('resize', function() {
-            updateNavbarHeight();
-        });
 
-        // Data pro plán akcí
-        const planAkciData = [
-            {nazev:'Jednodenní výlet',datum:'27.9.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Marcel, Jirka, Julča'},
-            {nazev:'72 hodin',datum:'11.10.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Blatník, Greta'},
-            {nazev:'Podzimní prázdniny',datum:'24.10. - 29.10.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lucka, Eliška'},
-            {nazev:'Hra po Praze',datum:'22.11.',info:'',fotky:'',clanek:'',video:'',vedouci:'Matylda, Honza'},
-            {nazev:'Deskohraní',datum:'23.11.',info:'',fotky:'',clanek:'',video:'',vedouci:'Lukáš Ch.'},
-            {nazev:'Vánoční besídka',datum:'12.12. - 14.12.',info:'',fotky:'',clanek:'',video:'',vedouci:'Lukáš Ch., Kuba'},
-            {nazev:'Jednodenní výlet',datum:'17.1.',info:'',fotky:'',clanek:'',video:'',vedouci:'Vláďa'},
-            {nazev:'Ledová města',datum:'29.1. - 1.2.',info:'',fotky:'',clanek:'',video:'',vedouci:'Blatník, Žofka'},
-            {nazev:'Jarní tábor',datum:'21.2. - 28.2.',info:'',fotky:'',clanek:'',video:'',vedouci:'Marcel, Eliška'},
-            {nazev:'Výlet',datum:'27.3. - 29.3.',info:'',fotky:'',clanek:'',video:'',vedouci:'Kačka, Lucka'},
-            {nazev:'Školení vedoucích',datum:'10.4. - 12.4.',info:'',fotky:'',clanek:'',video:'',vedouci:'Marcel'},
-            {nazev:'Jednodenní výlet',datum:'18.4.',info:'',fotky:'',clanek:'',video:'',vedouci:'Honza, Kuba'},
-            {nazev:'Výlet',datum:'7.5. - 10.5.',info:'',fotky:'',clanek:'',video:'',vedouci:'Matylda, Žofka'},
-            {nazev:'Výlet pro starší',datum:'29.5. - 31.5.',info:'',fotky:'',clanek:'',video:'',vedouci:'Julča, Greta'},
-            {nazev:'50. Oheň',datum:'12.6. - 14.6.',info:'',fotky:'',clanek:'',video:'',vedouci:'Blatník, Vláďa, Jirka'},
-            {nazev:'Letní tábor',datum:'3.7. - 19.7.',info:'',fotky:'',clanek:'',video:'',vedouci:'Všichni'},
-            {nazev:'Voda (vedoucí, instruktoři)',datum:'6.9. - 8.9.',info:'',fotky:'',clanek:'',video:'',vedouci:'Klára'},
-            {nazev:'Jednodenní výlet',datum:'21.9.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Vláďa, Damík'},
-            {nazev:'Školení vedoucích',datum:'4.10. - 6.10.',info:'',fotky:'',clanek:'',video:'',vedouci:'Marcel'},
-            {nazev:'72 hodin',datum:'12.10.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Blatník, Honza'},
-            {nazev:'Podzimní prázdniny',datum:'25.10. - 30.10.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lucka, Eliška, Lukáš Ř.'},
-            {nazev:'Hra po Praze',datum:'23.11.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Kačka, Matylda'},
-            {nazev:'Filmový maraton',datum:'23.11. - 24.11.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Kačka, Matylda'},
-            {nazev:'Deskohraní',datum:'1.12.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lukáš Ch., Kuba, Julča'},
-            {nazev:'Vánoční besídka',datum:'13.12. - 15.12.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lukáš Ch., Jirka'},
-            {nazev:'Jednodenní výlet',datum:'11.1.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Žofka'},
-            {nazev:'Jarní tábor',datum:'15.2. - 22.2.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Marcel, Klára, Lukáš Ř.'},
-            {nazev:'Jednodenní výlet',datum:'22.3.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Lucka, Vláďa'},
-            {nazev:'Výlet',datum:'11.4. - 13.4.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Kačka, Honza, Jirka'},
-            {nazev:'Výlet pro starší',datum:'2.5. - 4.5.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Matylda, Damík'},
-            {nazev:'Republikové setkání Pionýra',datum:'23.5. - 25.5.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Eliška, Kuba'},
-            {nazev:'49. Oheň',datum:'13.6. - 15.6.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Blatník, Žofka, Julča'},
-            {nazev:'Letní tábor',datum:'27.6. - 13.7.',info:'info',fotky:'',clanek:'',video:'',vedouci:'Marcel, Lukáš Ch.'}
-        ];
-        let planAkciPage = 0;
-        const planAkciPageSize = 10;
+<script>
+  fetch("vedouci.html")
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById("vedouci-tabulka").innerHTML = html;
+    })
+    .catch(error => console.error("Chyba při načítání tabulky:", error));
+</script>
 
-        function renderPlanAkciTable() {
-            const tbody = document.getElementById('plan-akci-tbody');
-            tbody.innerHTML = '';
-            const start = planAkciPage * planAkciPageSize;
-            const end = Math.min(start + planAkciPageSize, planAkciData.length);
-            for (let i = start; i < end; i++) {
-                const row = planAkciData[i];
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${row.nazev}</td><td>${row.datum}</td><td>${row.info}</td><td>${row.fotky}</td><td>${row.clanek}</td><td>${row.video}</td><td>${row.vedouci}</td>`;
-                tbody.appendChild(tr);
-            }
-            document.getElementById('plan-akci-prev').disabled = planAkciPage === 0;
-            document.getElementById('plan-akci-next').disabled = end >= planAkciData.length;
-        }
 
-        function planAkciPrev() {
-            if (planAkciPage > 0) {
-                planAkciPage--;
-                renderPlanAkciTable();
-            }
-        }
-        function planAkciNext() {
-            if ((planAkciPage + 1) * planAkciPageSize < planAkciData.length) {
-                planAkciPage++;
-                renderPlanAkciTable();
-            }
-        }
-    </script>
-    
 </body>
 
 </html>
