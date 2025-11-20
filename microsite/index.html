@@ -188,7 +188,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#vylety">Výlety</a>
                         <li class="nav-item"> -->
@@ -398,7 +397,135 @@
                 </table>
             </div>
 
-            <div id="vedouci-tabulka"></div>
+            <div class="table-responsive">
+    <table class="table table-bordered vylety-table">
+        <thead class="table-light">
+            <tr>
+                <th>Přezdívka</th>
+                <th>Jméno</th>
+                <th>E-mail</th>
+                <th>Telefon</th>
+                <th>Funkce</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Marcel</td>
+                <td>Marcel Šíp</td>
+                <td>marcel@kocovnici.cz</td>
+                <td>777937167</td>
+                <td>hl. vedoucí</td>
+            </tr>
+            <tr>
+                <td>Zůza</td>
+                <td>Zuzana Baziková</td>
+                <td>zuza@kocovnici.cz</td>
+                <td></td>
+                <td>hospodář</td>
+            </tr>
+            <tr>
+                <td>Lukáš</td>
+                <td>Lukáš Chochlovský</td>
+                <td>lukas@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Kačka</td>
+                <td>Kateřina Repková</td>
+                <td>kacka@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Blatník</td>
+                <td>Marek Šafra</td>
+                <td>blatnik@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Lucka</td>
+                <td>Lucie Řípová</td>
+                <td>lucka@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Eliška</td>
+                <td>Eliška Kuráňová</td>
+                <td>eliska@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Matylda</td>
+                <td>Matylda Štindlová</td>
+                <td>matylda@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Žofka</td>
+                <td>Žofie Kaliničová</td>
+                <td>zofka@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Lukáš</td>
+                <td>Lukáš Řípa</td>
+                <td>lukas2@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Honza</td>
+                <td>Jan Sklenka</td>
+                <td>honza@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Vláďa</td>
+                <td>Vladimír Kuráň</td>
+                <td>vlada@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Kuba</td>
+                <td>Jakub Pospíšil</td>
+                <td>kuba@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Julča</td>
+                <td>Julie Novotná</td>
+                <td>julca@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Jirka</td>
+                <td>Jiří Bertien</td>
+                <td>jirka@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Greta</td>
+                <td>Margareta Landová</td>
+                <td>greta@kocovnici.cz</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
 
             
 
@@ -435,50 +562,7 @@
         </div>
     </div>
 
-    <script src="planAkciData.js"></script>
-    <script>
-        let planAkciPage = 0;
-        const planAkciPageSize = 10;
 
-        function renderPlanAkciTable() {
-            const tbody = document.getElementById('plan-akci-tbody');
-            tbody.innerHTML = '';
-            const start = planAkciPage * planAkciPageSize;
-            const end = Math.min(start + planAkciPageSize, planAkciData.length);
-            for (let i = start; i < end; i++) {
-                const row = planAkciData[i];
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${row.nazev}</td>
-                    <td>${row.datum}</td>
-                    <td>${row.info}</td>
-                    <td>${row.fotky}</td>
-                    <td>${row.clanek}</td>
-                    <td>${row.video}</td>
-                    <td>${row.vedouci}</td>
-                `;
-                tbody.appendChild(tr);
-            }
-            document.getElementById('plan-akci-prev').disabled = planAkciPage === 0;
-            document.getElementById('plan-akci-next').disabled = end >= planAkciData.length;
-        }
-
-        function planAkciPrev() {
-            if (planAkciPage > 0) {
-                planAkciPage--;
-                renderPlanAkciTable();
-            }
-        }
-
-        function planAkciNext() {
-            if ((planAkciPage + 1) * planAkciPageSize < planAkciData.length) {
-                planAkciPage++;
-                renderPlanAkciTable();
-            }
-        }
-
-        window.addEventListener('load', renderPlanAkciTable);
-    </script>
 </section>
 
 
@@ -495,28 +579,82 @@
             </div>
             <div class="row g-4">
                 <div class="col-6 col-md-4">
-                    <img src="foto1.jpg" alt="Fotka 1" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+                        <img src="foto1.jpg" alt="Fotka 1" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover; cursor:pointer;" width="600" height="450" loading="lazy" decoding="async">
+                    </a>
                 </div>
                 <div class="col-6 col-md-4">
-                    <img src="foto2.jpg" alt="Fotka 2" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="1">
+                        <img src="foto2.jpg" alt="Fotka 2" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover; cursor:pointer;" width="600" height="450" loading="lazy" decoding="async">
+                    </a>
                 </div>
                 <div class="col-6 col-md-4">
-                    <img src="foto3.jpg" alt="Fotka 3" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="2">
+                        <img src="foto3.jpg" alt="Fotka 3" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover; cursor:pointer;" width="600" height="450" loading="lazy" decoding="async">
+                    </a>
                 </div>
                 <div class="col-6 col-md-4">
-                    <img src="foto4.jpg" alt="Fotka 4" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="3">
+                        <img src="foto4.jpg" alt="Fotka 4" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover; cursor:pointer;" width="600" height="450" loading="lazy" decoding="async">
+                    </a>
                 </div>
                 <div class="col-6 col-md-4">
-                    <img src="foto5.jpg" alt="Fotka 5" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="4">
+                        <img src="foto5.jpg" alt="Fotka 5" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover; cursor:pointer;" width="600" height="450" loading="lazy" decoding="async">
+                    </a>
                 </div>
                 <div class="col-6 col-md-4">
-                    <img src="foto6.jpg" alt="Fotka 6" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover" width="600" height="450" loading="lazy" decoding="async">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="5">
+                        <img src="foto6.jpg" alt="Fotka 6" class="w-100 h-100 rounded shadow-sm" style="object-fit:cover; cursor:pointer;" width="600" height="450" loading="lazy" decoding="async">
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Lightbox (Bootstrap Modal + Carousel) -->
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="galleryModalLabel">Fotogalerie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="galleryCarousel" class="carousel slide" data-bs-interval="false">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="foto1.jpg" class="d-block w-100" alt="Fotka 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="foto2.jpg" class="d-block w-100" alt="Fotka 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="foto3.jpg" class="d-block w-100" alt="Fotka 3">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="foto4.jpg" class="d-block w-100" alt="Fotka 4">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="foto5.jpg" class="d-block w-100" alt="Fotka 5">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="foto6.jpg" class="d-block w-100" alt="Fotka 6">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Sekce Odborky -->
     <section id="odborky" class="section">
@@ -755,55 +893,7 @@
         </div>
     </div>
 
-    <script src="taboryData.js"></script>
-    <script>
-        let taboryPage = 0;
-        const taboryPageSize = 8;
 
-function renderTaboryTable() {
-    const tbody = document.getElementById('tabory-tbody');
-    tbody.innerHTML = '';
-    const start = taboryPage * taboryPageSize;
-    const end = Math.min(start + taboryPageSize, taboryData.length);
-
-    // skutečné řádky s daty
-    for (let i = start; i < end; i++) {
-        const t = taboryData[i];
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${t.rok}</td><td>${t.misto}</td><td>${t.tema}</td>`;
-        tbody.appendChild(tr);
-    }
-
-    // doplnit prázdné řádky do 8
-    for (let i = end; i < start + 8; i++) {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>&nbsp;</td><td></td><td></td>`;
-        tbody.appendChild(tr);
-    }
-
-    // tlačítka
-    document.getElementById('tabory-prev').disabled = taboryPage === 0;
-    document.getElementById('tabory-next').disabled = end >= taboryData.length;
-}
-
-
-
-        function taboryPrev() {
-            if (taboryPage > 0) {
-                taboryPage--;
-                renderTaboryTable();
-            }
-        }
-
-        function taboryNext() {
-            if ((taboryPage + 1) * taboryPageSize < taboryData.length) {
-                taboryPage++;
-                renderTaboryTable();
-            }
-        }
-
-        window.addEventListener('load', renderTaboryTable);
-    </script>
 </section>
 
 
@@ -811,21 +901,50 @@ function renderTaboryTable() {
 <section id="kontakty" class="section">
     <div class="container">
         <h2>Kontakty</h2>
-        <div class="blok_navy">
-            <h3>Pionýr, z. s. – 49. pionýrská skupina Kočovníci</h3>
-            <p>
-                <strong>IČO:</strong> 66005752<br>
-                <strong>Účet:</strong> 2700230041/2010<br>
-                <strong>Datová schránka:</strong> s4s5ecn
-            </p>
-            <p>
-                <strong>Adresa klubovny:</strong><br>
-                Nad Panenskou 5, Praha 6
-            </p>
-            <p>
-                <strong>Tel.:</strong> <a href="tel:+420731261239">731 261 239</a><br>
-                <strong>E-mail:</strong> <a href="mailto:info@kocovnici.cz">info@kocovnici.cz</a>
-            </p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="blok_navy">
+                    <h3>Pionýr, z. s. – 49. pionýrská skupina Kočovníci</h3>
+                    <p>
+                        <strong>IČO:</strong> 66005752<br>
+                        <strong>Účet:</strong> 2700230041/2010<br>
+                        <strong>Datová schránka:</strong> s4s5ecn
+                    </p>
+                    <p>
+                        <strong>Adresa klubovny:</strong><br>
+                        Nad Panenskou 5, Praha 6
+                    </p>
+                    <p>
+                        <strong>Tel.:</strong> <a href="tel:+420731261239">731 261 239</a><br>
+                        <strong>E-mail:</strong> <a href="mailto:info@kocovnici.cz">info@kocovnici.cz</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="blok_navy">
+                    <h3>Napište nám</h3>
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Jméno</label>
+                            <input type="text" class="form-control" id="contactName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactSubject" class="form-label">Předmět</label>
+                            <input type="text" class="form-control" id="contactSubject">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Zpráva</label>
+                            <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Odeslat zprávu</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div class="mt-4">
@@ -842,6 +961,18 @@ function renderTaboryTable() {
     </div>
 </section>
 
+<!-- Sekce Flappy Bird Hra -->
+<section id="flappybird-game" class="section">
+    <div class="container text-center">
+        <h2>Zahrajte si Flappy Kočovníci!</h2>
+        <p class="mb-4">Běžte si zahrát naši hru Flappy Kočovníci přímo <a href="folder/flappy.html" target="_blank">zde</a><br>
+.</p>
+        <div class="ratio ratio-4x3" style="max-width: 300px; margin: 0 auto; border: 1px solid var(--primary-color); border-radius: 8px; overflow: hidden;">
+            <iframe src="folder/flappy.html" title="Flappy Kočovníci Game" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </div>
+</section>
+
     <footer class="bg-light text-center text-lg-start mt-5">
         <div class="container p-4">
             <p class="text-center">&copy; Všchna práva vyhrazena atd...</p>
@@ -849,17 +980,10 @@ function renderTaboryTable() {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="themeToggle.js"></script>
-
-
-<script>
-  fetch("vedouci.html")
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById("vedouci-tabulka").innerHTML = html;
-    })
-    .catch(error => console.error("Chyba při načítání tabulky:", error));
-</script>
+    <script src="planAkciData.js" defer></script>
+    <script src="taboryData.js" defer></script>
+    <script src="themeToggle.js" defer></script>
+    <script src="main.js" defer></script>
 
 
 </body>
