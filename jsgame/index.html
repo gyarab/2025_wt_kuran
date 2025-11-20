@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Game</title>
+
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        input {
+            padding: 3px;
+            margin: 6px;
+            font-size: 1rem;
+            width: 80px;
+        }
+        button {
+            padding: 6px 12px;
+            font-size: 1rem;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>JS Game</h1>
+    <p id="message">
+        Hádej číslo od 1 do 20
+    </p>
+
+    <input id="guess" type="number" name="guess">
+    <input id="guessBtn" type="button" value="Zkus">
+    <br>
+    <input id="newGameBtn" type="button" value="Nova hra" onclick="newGame()">
+
+    <p>
+        Počet pokusů <span id="attempts">0</span>.
+    </p>
+
+    <script>
+        let secretNumber
+        let attempts
+        let supportTimer = null
+
+        const attemptsEl = document.getElementById('attempts')
+        const messageEl = document.getElementById('message')
+
+        function newGame() {
+            // start/prepare a new game
+            support() // podpora uzivatelu (nastavi timeout)
+            secretNumber = Math.floor(Math.random() * 20) + 1
+            attempts = 0
+            attemptsEl.textContent = attempts
+            messageEl.textContent = 'Hádej číslo od 1 do 20'
+
+            // enable inputs (in case they were disabled after win)
+            const inputEl = document.getElementById('guess')
+            const guessBtn = document.getElementById('guessBtn')
+            inputEl.disabled = false
+            inputEl.value = ''
+            inputEl.focus()
+            guessBtn.disabled = false
+
+            console.log('--- NEW GAME ---')
+            console.log('tajne cislo je', secretNumber)
+        }
+
+        function checkGuess() {
+            const inputEl = document.getElementById('guess')
+            const guessBtn = document.getElementById('guessBtn')
+            const guess = Number(inputEl.value)
+
+            // validate
+            if (!secretNumber) {
+                messageEl.textContent = 'Stiskni "Nova hra" pro start.'
+                return
+            }
+            if (!guess || isNaN(guess) || guess < 1 || guess > 20) {
+                messageEl.textContent = 'Zadej platné číslo mezi 1 a 20.'
+                inputEl.value = ''
+                inputEl.focus()
+                return
+            }
+
+            attempts++
+            attemptsEl.textContent = attempts
+
+            if (guess === secretNumber) {
+                messageEl.textContent = `Gratuluji! Uhodl jsi číslo ${secretNumber} za ${attempts} pokusů.`
+                // disable further input until new game
+                inputEl.disabled = true
+                guessBtn.disabled = true
+                // clear support timer so alert doesn't pop after win
+                if (supportTimer) {
+                    clearTimeout(supportTimer)
+                    supportTimer = null
+                }
+            } else if (guess < secretNumber) {
+                messageEl.textContent = 'Příliš malé.'
+            } else {
+                messageEl.textContent = 'Příliš velké.'
+            }
+
+            // clear input and keep focus for next guess
+            inputEl.value = ''
+            inputEl.focus()
+        }
+
+        document.getElementById('guessBtn').addEventListener('click', checkGuess)
+        document.getElementById('guess').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault()
+                checkGuess()
+            }
+        })
+
+        function hlaska() {
+            alert('Pospěšte si, hra běží!')
+        }
+
+        function support() {
+            // zobrazeni hlasky po 10 sekundach
+            if (supportTimer) {
+                clearTimeout(supportTimer)
+            }
+            supportTimer = window.setTimeout(hlaska, 10000)
+        }
+
+        newGame()
+    </script>
+</body>
+</html>
