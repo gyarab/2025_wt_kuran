@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>htmx – základní demo</title>
+    <style>
+      body { font-family: Arial, sans-serif; padding: 1rem; }
+      button { margin: .25rem; padding: .5rem 1rem; }
+      #demo { margin-top: 1rem; padding: .5rem; border: 1px solid #ddd; min-height: 3rem; }
+      .fragment { padding: .5rem; background: #f6f8fa; border-radius: 4px; }
+    </style>
+</head>
+<body>
+  <h1>htmx – malé demo</h1>
+
+  <p>
+    1) Načíst HTML fragment do cílového elementu:
+  </p>
+  <button hx-get="fragment-a.html" hx-target="#demo" hx-swap="innerHTML">Load Fragment A</button>
+  <button hx-get="fragment-b.html" hx-target="#demo" hx-swap="innerHTML">Load Fragment B</button>
+
+  <p>
+    2) Odeslat formulář POSTem na veřejné echo (httpbin) a vložit odpověď:
+  </p>
+  <form id="echoForm" hx-post="https://httpbin.org/post" hx-target="#echoResult" hx-swap="innerHTML">
+    <input name="name" placeholder="Jméno" />
+    <button type="submit">Send (POST)</button>
+  </form>
+  <div id="echoResult" style="margin-top:.5rem;border:1px dashed #ccc;padding:.5rem">Výsledek POSTu se zobrazí zde</div>
+
+  <p>
+    3) Polling / automatická aktualizace každých 5s (vkládá JSON jako text):
+  </p>
+  <div id="time"
+       hx-get="https://worldtimeapi.org/api/timezone/Etc/UTC"
+       hx-trigger="every 5s"
+       hx-swap="innerText">
+    Načítám čas...
+  </div>
+
+  <h2>Target area</h2>
+  <div id="demo" class="fragment">Sem se načítají fragmenty (Fragment A / B).</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"></script>
+</body>
+</html>
