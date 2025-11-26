@@ -1,0 +1,28 @@
+Úvod
+
+
+Popis problému
+
+
+Přehled nejznámějších bezplatných modelů
+
+možnosti a omezení bezplatných verzí
+Návrh experimentů
+Návrh vyhodnocení výsledků
+
+
+Experimenty - testování schopností jednotlivých modelů
+
+vědomostní otázky
+logické problémy
+matematické příklady
+programátorské úkoly
+
+
+porovnání výsledků
+
+
+závěr
+
+
+zdroje
