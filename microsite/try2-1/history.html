@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>49. PS Kočovníci</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+           --primary-color: navy;
+           --accent-color: #ffd700;
+           --text-color: #000;
+           --bg-color: #fff;
+           --navbar-height: 84px;
+           --navbar-color: #3a6caa;
+       }
+       
+       [data-bs-theme="dark"] {
+           --primary-color: #1a1a5c;
+           --accent-color: #ffd700;
+           --text-color: #fff;
+           --bg-color: #000;
+       }
+       
+       body {
+           color: var(--text-color);
+           background-color: var(--bg-color);
+           font-family: Arial, sans-serif;
+           padding-top: var(--navbar-height);
+       }
+        footer {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        border-top: 2px solid var(--accent-color);
+        transition: background-color 0.3s, color 0.3s;
+        }
+
+        footer.bg-light {
+        background-color: var(--bg-color) !important;
+        color: var(--text-color) !important;
+        }
+
+        [data-bs-theme="dark"] footer {
+        background-color: var(--primary-color) !important;
+        color: var(--accent-color) !important;
+        border-top-color: var(--accent-color);
+        }
+
+
+       .navbar {
+           background-color: var(--primary-color) !important;
+       }
+       
+       .navbar-brand,
+       .nav-link {
+           color: var(--accent-color) !important;
+       }
+       
+       .nav-link:hover {
+           color: white !important;
+       }
+       
+       .section {
+           min-height: 100vh;
+           padding: 80px 20px;
+           border-bottom: 2px solid var(--accent-color);
+           scroll-margin-top: calc(var(--navbar-height) + 0.5rem);
+       }
+       
+       .section:last-of-type {
+        border-bottom: none;
+        }
+
+       h1,
+       h2 {
+           color: var(--primary-color);
+           margin-bottom: 30px;
+       }
+       
+       [data-bs-theme="dark"] h1,
+       [data-bs-theme="dark"] h2 {
+           color: var(--accent-color);
+       }
+       
+       .theme-switch {
+           cursor: pointer;
+           padding: 5px 10px;
+           border: 2px solid var(--accent-color);
+           border-radius: 5px;
+           color: var(--accent-color);
+           background: transparent;
+       }
+
+       /* Výlety: horní polovina - různé foto pro light / dark režim */
+       .vylety-hero {
+           height: 50vh;
+           overflow: hidden;
+           border-radius: 6px;
+           margin-bottom: 1rem;
+       }
+       .vylety-hero img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           display: block;
+       }
+       .vylety-hero .light-only { display: block; }
+       .vylety-hero .dark-only { display: none; }
+       [data-bs-theme="dark"] .vylety-hero .light-only { display: none; }
+       [data-bs-theme="dark"] .vylety-hero .dark-only { display: block; }
+
+       .vylety-table { max-width: 900px; }
+       /* Brand block styles: navy + yellow palette */
+       /* Use existing variables: --primary-color (navy) and --accent-color (gold) */
+
+       .blok_navy {
+           background: linear-gradient(180deg, rgba(255,215,0,0.06), rgba(255,215,0,0.03)); /* subtle pale yellow */
+           border-left: 6px solid var(--primary-color); /* navy left accent */
+           padding: 1rem;
+           border-radius: 6px;
+           color: #073049; /* dark navy-ish text for readability */
+           margin-bottom: 1rem;
+       }
+
+       .nadpis_navy h2 {
+           display: inline-block;
+           color: var(--primary-color);
+           padding: 0.25rem 0.6rem;
+           border-radius: 4px;
+       }
+
+       .text_zvyrazneny {
+           display: inline-block;
+           padding: 0.12rem 0.5rem;
+           background: rgba(7,48,73,0.06);
+           color: var(--primary-color);
+           font-weight: 700;
+           border-radius: 4px;
+           margin: 0.4rem 0;
+       }
+
+       .blok_navy a {
+           color: var(--primary-color);
+           font-weight: 600;
+           text-decoration: underline;
+       }
+
+       /* Dark mode adjustments to keep good contrast */
+       [data-bs-theme="dark"] .blok_navy {
+           background: linear-gradient(180deg, rgba(10,24,48,0.18), rgba(10,24,48,0.12)); /* darker bluish background */
+           border-left: 6px solid var(--accent-color); /* golden accent in dark mode */
+           color: #fff; /* use white text for best readability */
+       }
+
+       [data-bs-theme="dark"] .nadpis_navy h2 {
+           background: var(--accent-color);
+           color: var(--primary-color);
+       }
+
+       [data-bs-theme="dark"] .blok_navy a {
+           color: var(--accent-color);
+       }
+
+       [data-bs-theme="dark"] .text_zvyrazneny {
+           color: var(--accent-color);
+           background: rgba(255,215,0,0.12);
+       }
+    </style>
+</head>
+
+<body>
+    <!-- Navigace -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.png" alt="Logo Kočovníci" style="height:40px; margin-right:10px;">
+                <div class="flex-grow-1 d-flex justify-content-center align-items-center" style="height:84px;">
+                    <span class="navbar-text" style="font-size:1.25rem; font-weight:600; color:var(--accent-color);">
+                        49. PS Kočovníci
+                    </span>
+                </div>
+                <img src="logopionyr.png" alt="Logo Pionýr" style="height:36px;" class="ms-2 d-none d-md-inline">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Domov</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="troops.html">Členové</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="camps.html">Tábory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="photos.html">Fotky</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="whatwedo.html">Co umíme</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="history.html">Historie</a>
+                    </li>
+                </ul>
+                <button class="theme-switch" onclick="toggleTheme()">🌓 Změnit motiv</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sekce Historie -->
+    <section id="historie" class="section">
+        <div class="container">
+            <h2>Historie oddílu</h2>
+            <h3>Tradice od roku 1977</h3>
+            <p>
+                Historie oddílu <strong>Kočovníci</strong> se píše od roku <strong>1977</strong>,
+                kdy došlo k jeho vzniku sloučením oddílů <strong>Moby-Dick</strong> a <strong>Panteři</strong>.
+                Za dobu existence jsme uspořádali přes <strong>600 výletů</strong> a během letních táborů
+                vystřídali řadu tábořišť.
+            </p>
+            <p><a href="listina.jpg">Zakládací listina</a></p>
+            <h4>Kde najdu víc informací?</h4>
+            <p>
+                Více historických fotek najdete v albech na Facebooku, která vznikla u příležitosti
+                <strong>40 let oddílu</strong>:
+            </p>
+            <ul>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1394129610652873">Oddílová historie I. – 1977–84</a></li>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1433152330083934">Oddílová historie II. – 1983–88</a></li>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1461882500544250">Oddílová historie III. – 1989–94</a></li>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1469832193082614">Oddílová historie IV. – 1995–2000</a></li>
+                <li><a href="https://www.facebook.com/kocovnici/photos/?tab=album&album_id=1478834575515709">Oddílová historie V. – 2003–2009</a></li>
+            </ul>
+            <p>
+                Od roku 2003 najdete fotky a videa na našich stránkách.<br>
+                Od roku 2011 v naší fotogalerii na
+                <a href="https://kocovnici.rajce.idnes.cz" target="_blank">Rajčeti</a>.<br>
+                A mezi léty 2002–2010 si z plánu akcí můžete otevřít článek z daného výletu.
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <p class="text-center">&copy; Všchna práva vyhrazena atd...</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="planAkciData.js" defer></script>
+    <script src="taboryData.js" defer></script>
+    <script src="themeToggle.js" defer></script>
+    <script src="main.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>49. PS Kočovníci</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+           --primary-color: navy;
+           --accent-color: #ffd700;
+           --text-color: #000;
+           --bg-color: #fff;
+           --navbar-height: 84px;
+           --navbar-color: #3a6caa;
+       }
+       
+       [data-bs-theme="dark"] {
+           --primary-color: #1a1a5c;
+           --accent-color: #ffd700;
+           --text-color: #fff;
+           --bg-color: #000;
+       }
+       
+       body {
+           color: var(--text-color);
+           background-color: var(--bg-color);
+           font-family: Arial, sans-serif;
+           padding-top: var(--navbar-height);
+       }
+        footer {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        border-top: 2px solid var(--accent-color);
+        transition: background-color 0.3s, color 0.3s;
+        }
+
+        footer.bg-light {
+        background-color: var(--bg-color) !important;
+        color: var(--text-color) !important;
+        }
+
+        [data-bs-theme="dark"] footer {
+        background-color: var(--primary-color) !important;
+        color: var(--accent-color) !important;
+        border-top-color: var(--accent-color);
+        }
+
+
+       .navbar {
+           background-color: var(--primary-color) !important;
+       }
+       
+       .navbar-brand,
+       .nav-link {
+           color: var(--accent-color) !important;
+       }
+       
+       .nav-link:hover {
+           color: white !important;
+       }
+       
+       .section {
+           min-height: 100vh;
+           padding: 80px 20px;
+           border-bottom: 2px solid var(--accent-color);
+           scroll-margin-top: calc(var(--navbar-height) + 0.5rem);
+       }
+       
+       .section:last-of-type {
+        border-bottom: none;
+        }
+
+       h1,
+       h2 {
+           color: var(--primary-color);
+           margin-bottom: 30px;
+       }
+       
+       [data-bs-theme="dark"] h1,
+       [data-bs-theme="dark"] h2 {
+           color: var(--accent-color);
+       }
+       
+       .theme-switch {
+           cursor: pointer;
+           padding: 5px 10px;
+           border: 2px solid var(--accent-color);
+           border-radius: 5px;
+           color: var(--accent-color);
+           background: transparent;
+       }
+
+       /* Výlety: horní polovina - různé foto pro light / dark režim */
+       .vylety-hero {
+           height: 50vh;
+           overflow: hidden;
+           border-radius: 6px;
+           margin-bottom: 1rem;
+       }
+       .vylety-hero img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           display: block;
+       }
+       .vylety-hero .light-only { display: block; }
+       .vylety-hero .dark-only { display: none; }
+       [data-bs-theme="dark"] .vylety-hero .light-only { display: none; }
+       [data-bs-theme="dark"] .vylety-hero .dark-only { display: block; }
+
+       .vylety-table { max-width: 900px; }
+       /* Brand block styles: navy + yellow palette */
+       /* Use existing variables: --primary-color (navy) and --accent-color (gold) */
+
+       .blok_navy {
+           background: linear-gradient(180deg, rgba(255,215,0,0.06), rgba(255,215,0,0.03)); /* subtle pale yellow */
+           border-left: 6px solid var(--primary-color); /* navy left accent */
+           padding: 1rem;
+           border-radius: 6px;
+           color: #073049; /* dark navy-ish text for readability */
+           margin-bottom: 1rem;
+       }
+
+       .nadpis_navy h2 {
+           display: inline-block;
+           color: var(--primary-color);
+           padding: 0.25rem 0.6rem;
+           border-radius: 4px;
+       }
+
+       .text_zvyrazneny {
+           display: inline-block;
+           padding: 0.12rem 0.5rem;
+           background: rgba(7,48,73,0.06);
+           color: var(--primary-color);
+           font-weight: 700;
+           border-radius: 4px;
+           margin: 0.4rem 0;
+       }
+
+       .blok_navy a {
+           color: var(--primary-color);
+           font-weight: 600;
+           text-decoration: underline;
+       }
+
+       /* Dark mode adjustments to keep good contrast */
+       [data-bs-theme="dark"] .blok_navy {
+           background: linear-gradient(180deg, rgba(10,24,48,0.18), rgba(10,24,48,0.12)); /* darker bluish background */
+           border-left: 6px solid var(--accent-color); /* golden accent in dark mode */
+           color: #fff; /* use white text for best readability */
+       }
+
+       [data-bs-theme="dark"] .nadpis_navy h2 {
+           background: var(--accent-color);
+           color: var(--primary-color);
+       }
+
+       [data-bs-theme="dark"] .blok_navy a {
+           color: var(--accent-color);
+       }
+
+       [data-bs-theme="dark"] .text_zvyrazneny {
+           color: var(--accent-color);
+           background: rgba(255,215,0,0.12);
+       }
+    </style>
+</head>
+
+<body>
+    <!-- Navigace -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.png" alt="Logo Kočovníci" style="height:40px; margin-right:10px;">
+                <div class="flex-grow-1 d-flex justify-content-center align-items-center" style="height:84px;">
+                    <span class="navbar-text" style="font-size:1.25rem; font-weight:600; color:var(--accent-color);">
+                        49. PS Kočovníci
+                    </span>
+                </div>
+                <img src="logopionyr.png" alt="Logo Pionýr" style="height:36px;" class="ms-2 d-none d-md-inline">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Domov</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="troops.html">Členové</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="camps.html">Tábory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="photos.html">Fotky</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="whatwedo.html">Co umíme</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="history.html">Historie</a>
+                    </li>
+                </ul>
+                <button class="theme-switch" onclick="toggleTheme()">🌓 Změnit motiv</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sekce Aktuality -->
+    <section id="vylety" class="section">
+        <div class="container">
+
+            <!-- lightmode = foto1 darkmode = foto2 -->
+            <div class="vylety-hero">
+                <img src="foto1.jpg" alt="Výlety (denní foto)" class="light-only">
+                <img src="foto2.jpg" alt="Výlety (noční foto)" class="dark-only">
+            </div>
+
+            <!-- tabulka na výlet -->
+            <div class="table-responsive">
+                <table class="table table-bordered vylety-table">
+                    <tbody>
+                        <tr>
+                            <th style="width:220px">Datum</th>
+                            <td>12. 10. 2025</td>
+                        </tr>
+                        <tr>
+                            <th>Trasa</th>
+                            <td>Karlštejn</td>
+                        </tr>
+                        <tr>
+                            <th>Sraz</th>
+                            <td>8:30, Hlavní nádraží</td>
+                        </tr>
+                        <tr>
+                            <th>Cena</th>
+                            <td>150 Kč</td>
+                        </tr>
+                        <tr>
+                            <th>Vedoucí</th>
+                            <td>Jan Novák</td>
+                        </tr>
+                        <tr>
+                            <th>S sebou</th>
+                            <td>Batoh, svačina, pití, pohodlná obuv, pláštěnka</td>
+                        </tr>
+                        <tr>
+                            <th>Poznámka</th>
+                            <td>Pojeďte s námi na jednodenní výlet na Karlštejn. Prosím hlašte se na novak@kocovnici.cz do 10.10.2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekce O nás -->
+    <section id="onas" class="section">
+        <div class="container">
+            <h1>O nás</h1>
+            <div class="nadpis_navy">
+                <h2>Kdo jsme?</h2>
+            </div>
+                <div class="blok_navy">
+                <p>
+                    Jsme dětský oddíl s tradicí od roku 1977 zaměřený na turistiku a tábornictví.
+                </p>
+                <p>
+                    Rádi trávíme čas aktivním způsobem v přírodě, snažíme se jí porozumět a v rámci možností i pomáhat.
+                </p>
+                <p>
+                    Jsme oddíl pro děti, takže si nejčastěji hrajeme. Hry mohou mít různé podoby, mohou nás leccos naučit nebo pomoci se o sobě něco nového dozvědět.
+                </p>
+                <p>
+                    Máme za to, že nejlepší je si věci vyzkoušet v bezpečném prostředí na vlastní kůži. Ať už jde o tábornické dovednosti jako vázání uzlů či rozdělávání ohně, ale i třeba umět se o sebe postarat i v nepohodlí nebo vyjít s ostatními v kolektivu.
+                </p>
+                <p>
+                    Ale hlavně jsme parta kamarádů. Velká část členů po překročení dětského věku pokračuje v oddíle jako vedoucí nebo i po ukončení činnosti zůstávají s oddílem v kontaktu.
+                </p>
+                <p>
+                </p>
+                <div class="text_zvyrazneny">Výroční zprávy </div>
+                <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2023.pdf" title="Výroční zpráva 2023">2023</a> |
+                <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2022.pdf" title="Výroční zpráva 2022">2022</a> |
+                <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2021.pdf" title="Výroční zpráva 2021">2021</a> |
+                <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2020.pdf" title="Výroční zpráva 2020">2020</a> |
+                <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2019.pdf" title="Výroční zpráva 2019">2019</a> |
+                <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2018.pdf" title="Výroční zpráva 2018">2018</a> |
+                <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2017.pdf" title="Výroční zpráva 2017">2017</a> |
+                <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2016.pdf" title="Výroční zpráva 2016">2016</a> |
+                <a href="http://www.kocovnici.cz/dokumenty/vyrocni_zprava_2015.pdf" title="Výroční zpráva 2015">2015</a>
+                <p></p>
+            </div>
+            <div class="nadpis_navy">
+                <h2>Co děláme?</h2>
+                <div class="blok_navy">
+                    <p>
+                    </p>
+                    <h3>Družinové schůzky</h3>
+                    Oddíl tvoří několik družin, které se schází každý týden v naší klubovně nebo v jejím okolí. V rámci schůzek mimo jiné pilujeme tábornické dovednosti jako je třeba uzlování. Nezůstáváme ale jen u toho - zkoušíme známé i neznámé sporty, hrajeme deskové
+                    hry nebo něco vyrábíme a tvoříme.
+                    <p></p>
+                    <p>
+                    </p>
+                    <h3>Pravidelné výlety</h3>
+                    Zhruba jednou měsíčně jezdíme na výlety - na jednodenní většinou do okolí Prahy, na vícedenní do vzdálenějších končin. V zimě spíme v budově (např. v klubovnách jiných oddílů), v létě pod širákem. Na výletech se seznamujeme s přírodou, hrajeme hry a poznáváme
+                    zajímavá místa. Mezi výlety mají již tradičně místo podzimní prázdniny, vánoční výprava či výroční oddílový Oheň.
+                    <p></p>
+                    <p>
+                    </p>
+                    <h3>Jarní tábor na horách</h3>
+                    O jarních prázdninách vytáhneme sjezdové i běžkové lyže a vyrážíme na týden na hory za sněhem.
+                    <p></p>
+                    <p>
+                    </p>
+                    <h3>Letní stanový tábor</h3>
+                    Vyvrcholením oddílového roku je čtrnáctidenní tábor v červenci. Tábor si sami stavíme na zelené louce, spíme v podsadových stanech a hrajeme dobrodružnou celotáborovou hru. Zároveň se všichni zapojují do běžného každodenního provozu a pomáhají například
+                    s vařením či nočními hlídkami.
+                    <p></p>
+                </div>
+                <div class="blok_navy">
+                    <h2>Máte zájem?</h2>
+                    <div class="blok_navy">
+                        Napište nám e-mail na adresu <a href="mailto:info@kocovnici.cz">info@kocovnici.cz</a> nebo se podívejte na <a href="index.php?pg=druziny" title="Přehled oddílových družin">přehled družin</a> a po domluvě se můžete přijít podívat
+                        na schůzku.
+                    </div>
+                </div>
+    </section>
+
+    <!-- Sekce Plán akcí -->
+<section id="plan" class="section">
+    <div class="container">
+        <h2>Plán akcí</h2>
+        <h3>Plán akcí na školní rok 2025/2026</h3>
+
+        <div class="table-responsive">
+            <table class="table table-bordered vylety-table">
+                <thead class="table-light">
+                    <tr>
+                        <th>Název</th>
+                        <th>Datum</th>
+                        <th>Info</th>
+                        <th>Fotky</th>
+                        <th>Článek</th>
+                        <th>Video</th>
+                        <th>Vedoucí</th>
+                    </tr>
+                </thead>
+                <tbody id="plan-akci-tbody">
+                    <!-- řádky budou načteny z planAkciData.js -->
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between mt-3">
+                <button class="btn btn-primary" id="plan-akci-prev" onclick="planAkciPrev()">Zpět</button>
+                <button class="btn btn-primary" id="plan-akci-next" onclick="planAkciNext()">Další</button>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <p class="text-center">&copy; Všchna práva vyhrazena atd...</p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="planAkciData.js" defer></script>
+    <script src="taboryData.js" defer></script>
+    <script src="themeToggle.js" defer></script>
+    <script src="main.js" defer></script>
+
+</body>
+
+</html>
