@@ -1,4 +1,4 @@
-# Psychologie barev – logo společnosti Datart
+# Datart
 
 ![Logo Datart](https://imgs.search.brave.com/NPc-Fl4pJHToNM7zJyR3aMpR1MPDqXyu7NP50E8Z664/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ocHRy/b25pYy5jei9pbWFn/ZXMvaHB0cm9uaWMu/Y3ovdXBsb2FkZXIv/ZmlsZXMvaHB0cm9u/aWMvbG9nYS9abmEl/QzQlOERreS9EQVRB/UlRfbG9nb19iYXJl/dm5lLnN2Zw)
 
