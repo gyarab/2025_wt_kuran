@@ -1,0 +1,142 @@
+/* Základní nastavení */
+:root {
+  --yellow: #ffc107;
+  --navy-blue: #001f3f;
+  --black: #000000;
+  --white: #ffffff;
+  --light-bg: #f8f9fa;
+  --dark-bg: #121212;
+  --light-text: #212529;
+  --dark-text: #f8f9fa;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  padding-top: 66px; /* Approximately 56px navbar height + 10px (1cm) gap */
+}
+
+.hero-image-container {
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 10%; /* Move text slightly up from true center */
+  color: var(--white);
+}
+
+.hero-text h1 {
+  font-family: 'Special Elite', monospace;
+  font-size: 5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-text p {
+  font-family: 'Special Elite', monospace;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  margin-top: -10px;
+}
+
+/* Light Mode */
+[data-bs-theme="light"] {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+[data-bs-theme="light"] .navbar {
+  background-color: var(--navy-blue) !important;
+}
+
+[data-bs-theme="light"] .navbar .nav-link,
+[data-bs-theme="light"] .navbar .navbar-brand {
+  color: var(--white);
+}
+
+[data-bs-theme="light"] .navbar .nav-link:hover,
+[data-bs-theme="light"] .navbar .navbar-brand:hover {
+    color: var(--yellow);
+}
+
+
+/* Dark Mode */
+[data-bs-theme="dark"] {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+[data-bs-theme="dark"] .navbar {
+  background-color: var(--black) !important;
+  border-bottom: 1px solid var(--navy-blue);
+}
+
+[data-bs-theme="dark"] .navbar .nav-link,
+[data-bs-theme="dark"] .navbar .navbar-brand {
+  color: var(--white);
+}
+
+[data-bs-theme="dark"] .navbar .nav-link:hover,
+[data-bs-theme="dark"] .navbar .navbar-brand:hover {
+    color: var(--yellow);
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #1e1e1e;
+    border: 1px solid var(--navy-blue);
+}
+
+/* Společné styly */
+.navbar-brand img {
+  height: 40px;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  color: var(--navy-blue);
+}
+
+[data-bs-theme="dark"] .section-title {
+    color: var(--yellow);
+}
+
+
+.card img {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.theme-toggle:hover {
+    color: var(--yellow);
+}

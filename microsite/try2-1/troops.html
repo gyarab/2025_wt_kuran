@@ -1,417 +1,267 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="cs" data-bs-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>49. PS Kočovníci</title>
+    <title>49. PS Kočovníci - Družiny</title>
+    
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root {
-           --primary-color: navy;
-           --accent-color: #ffd700;
-           --text-color: #000;
-           --bg-color: #fff;
-           --navbar-height: 84px;
-           --navbar-color: #3a6caa;
-       }
-       
-       [data-bs-theme="dark"] {
-           --primary-color: #1a1a5c;
-           --accent-color: #ffd700;
-           --text-color: #fff;
-           --bg-color: #000;
-       }
-       
-       body {
-           color: var(--text-color);
-           background-color: var(--bg-color);
-           font-family: Arial, sans-serif;
-           padding-top: var(--navbar-height);
-       }
-        footer {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        border-top: 2px solid var(--accent-color);
-        transition: background-color 0.3s, color 0.3s;
-        }
-
-        footer.bg-light {
-        background-color: var(--bg-color) !important;
-        color: var(--text-color) !important;
-        }
-
-        [data-bs-theme="dark"] footer {
-        background-color: var(--primary-color) !important;
-        color: var(--accent-color) !important;
-        border-top-color: var(--accent-color);
-        }
-
-
-       .navbar {
-           background-color: var(--primary-color) !important;
-       }
-       
-       .navbar-brand,
-       .nav-link {
-           color: var(--accent-color) !important;
-       }
-       
-       .nav-link:hover {
-           color: white !important;
-       }
-       
-       .section {
-           min-height: 100vh;
-           padding: 80px 20px;
-           border-bottom: 2px solid var(--accent-color);
-           scroll-margin-top: calc(var(--navbar-height) + 0.5rem);
-       }
-       
-       .section:last-of-type {
-        border-bottom: none;
-        }
-
-       h1,
-       h2 {
-           color: var(--primary-color);
-           margin-bottom: 30px;
-       }
-       
-       [data-bs-theme="dark"] h1,
-       [data-bs-theme="dark"] h2 {
-           color: var(--accent-color);
-       }
-       
-       .theme-switch {
-           cursor: pointer;
-           padding: 5px 10px;
-           border: 2px solid var(--accent-color);
-           border-radius: 5px;
-           color: var(--accent-color);
-           background: transparent;
-       }
-
-       /* Výlety: horní polovina - různé foto pro light / dark režim */
-       .vylety-hero {
-           height: 50vh;
-           overflow: hidden;
-           border-radius: 6px;
-           margin-bottom: 1rem;
-       }
-       .vylety-hero img {
-           width: 100%;
-           height: 100%;
-           object-fit: cover;
-           display: block;
-       }
-       .vylety-hero .light-only { display: block; }
-       .vylety-hero .dark-only { display: none; }
-       [data-bs-theme="dark"] .vylety-hero .light-only { display: none; }
-       [data-bs-theme="dark"] .vylety-hero .dark-only { display: block; }
-
-       .vylety-table { max-width: 900px; }
-       /* Brand block styles: navy + yellow palette */
-       /* Use existing variables: --primary-color (navy) and --accent-color (gold) */
-
-       .blok_navy {
-           background: linear-gradient(180deg, rgba(255,215,0,0.06), rgba(255,215,0,0.03)); /* subtle pale yellow */
-           border-left: 6px solid var(--primary-color); /* navy left accent */
-           padding: 1rem;
-           border-radius: 6px;
-           color: #073049; /* dark navy-ish text for readability */
-           margin-bottom: 1rem;
-       }
-
-       .nadpis_navy h2 {
-           display: inline-block;
-           color: var(--primary-color);
-           padding: 0.25rem 0.6rem;
-           border-radius: 4px;
-       }
-
-       .text_zvyrazneny {
-           display: inline-block;
-           padding: 0.12rem 0.5rem;
-           background: rgba(7,48,73,0.06);
-           color: var(--primary-color);
-           font-weight: 700;
-           border-radius: 4px;
-           margin: 0.4rem 0;
-       }
-
-       .blok_navy a {
-           color: var(--primary-color);
-           font-weight: 600;
-           text-decoration: underline;
-       }
-
-       /* Dark mode adjustments to keep good contrast */
-       [data-bs-theme="dark"] .blok_navy {
-           background: linear-gradient(180deg, rgba(10,24,48,0.18), rgba(10,24,48,0.12)); /* darker bluish background */
-           border-left: 6px solid var(--accent-color); /* golden accent in dark mode */
-           color: #fff; /* use white text for best readability */
-       }
-
-       [data-bs-theme="dark"] .nadpis_navy h2 {
-           background: var(--accent-color);
-           color: var(--primary-color);
-       }
-
-       [data-bs-theme="dark"] .blok_navy a {
-           color: var(--accent-color);
-       }
-
-       [data-bs-theme="dark"] .text_zvyrazneny {
-           color: var(--accent-color);
-           background: rgba(255,215,0,0.12);
-       }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons for theme switcher -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <!-- Navigace -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="logo.png" alt="Logo Kočovníci" style="height:40px; margin-right:10px;">
-                <div class="flex-grow-1 d-flex justify-content-center align-items-center" style="height:84px;">
-                    <span class="navbar-text" style="font-size:1.25rem; font-weight:600; color:var(--accent-color);">
-                        49. PS Kočovníci
-                    </span>
-                </div>
-                <img src="logopionyr.png" alt="Logo Pionýr" style="height:36px;" class="ms-2 d-none d-md-inline">
+                <img src="logo.png" alt="Logo Kočovníci" class="me-2">
+                49. PS Kočovníci
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Domov</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="troops.html">Členové</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="camps.html">Tábory</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="photos.html">Fotky</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="whatwedo.html">Co umíme</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="history.html">Historie</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Domů</a></li>
+                    <li class="nav-item"><a class="nav-link" href="history.html">Historie</a></li>
+                    <li class="nav-item"><a class="nav-link" href="whatwedo.html">Co děláme</a></li>
+                    <li class="nav-item"><a class="nav-link" href="camps.html">Tábory</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="troops.html">Družiny</a></li>
+                    <li class="nav-item"><a class="nav-link" href="photos.html">Fotky</a></li>
                 </ul>
-                <button class="theme-switch" onclick="toggleTheme()">🌓 Změnit motiv</button>
+                <div class="d-flex align-items-center">
+                    <a class="navbar-brand" href="https://www.pionyr.cz/" target="_blank">
+                        <img src="logopionyr.png" alt="Logo Pionýr" style="height:36px;">
+                    </a>
+                    <i class="bi bi-circle-half theme-toggle" onclick="toggleTheme()" title="Přepnout motiv"></i>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section id="clenove" class="section">
-        <div class="container">
-            <h4>Členské příspěvky</h4>
-                <p>Výše členského příspěvku je stanovena na 800 Kč na člena na rok.</p>
-            <h2>Členové</h2>
+    <main class="container section">
+        <h1 class="section-title">Naše družiny</h1>
+        <p class="text-center lead mb-4">Výše členského příspěvku je stanovena na <strong>800 Kč</strong> na člena na rok.</p>
 
-            <h3>Družinky</h3>
-            <div class="table-responsive">
-                <table class="table table-bordered vylety-table">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Družina</th>
-                            <th>Věk</th>
-                            <th>Čas schůzek</th>
-                            <th>Vedoucí</th>
-                            <th>Spojení</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Jeleni</td>
-                            <td>12-15</td>
-                            <td>pondělí 17:30 - 19:30</td>
-                            <td>Matylda, Honza</td>
-                            <td>
-                                matylda@kocovnici.cz<br>
-                                733 443 136
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Luskouni</td>
-                            <td>6-9</td>
-                            <td>úterý 17:00 - 19:00</td>
-                            <td>Eliška, Lukáš, Kuba</td>
-                            <td>
-                                eliska@kocovnici.cz<br>
-                                792 334 142
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Medvědi</td>
-                            <td>8-12</td>
-                            <td>čtvrtek 16:00 - 18:00</td>
-                            <td>Marcel, Jirka</td>
-                            <td>
-                                marcel@kocovnici.cz<br>
-                                777 937 167
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto4.jpg" class="card-img-top" alt="Družina Jeleni">
+                    <div class="card-header"><h4>Jeleni</h4></div>
+                    <div class="card-body">
+                        <p class="card-text"><strong>Věk:</strong> 12-15 let</p>
+                        <p class="card-text"><strong>Schůzky:</strong> pondělí 17:30 - 19:30</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Vedoucí: Matylda, Honza</small>
+                    </div>
+                </div>
             </div>
-
-            <div class="table-responsive">
-    <table class="table table-bordered vylety-table">
-        <thead class="table-light">
-            <tr>
-                <th>Přezdívka</th>
-                <th>Jméno</th>
-                <th>E-mail</th>
-                <th>Telefon</th>
-                <th>Funkce</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Marcel</td>
-                <td>Marcel Šíp</td>
-                <td>marcel@kocovnici.cz</td>
-                <td>777937167</td>
-                <td>hl. vedoucí</td>
-            </tr>
-            <tr>
-                <td>Zůza</td>
-                <td>Zuzana Baziková</td>
-                <td>zuza@kocovnici.cz</td>
-                <td></td>
-                <td>hospodář</td>
-            </tr>
-            <tr>
-                <td>Lukáš</td>
-                <td>Lukáš Chochlovský</td>
-                <td>lukas@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Kačka</td>
-                <td>Kateřina Repková</td>
-                <td>kacka@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Blatník</td>
-                <td>Marek Šafra</td>
-                <td>blatnik@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Lucka</td>
-                <td>Lucie Řípová</td>
-                <td>lucka@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Eliška</td>
-                <td>Eliška Kuráňová</td>
-                <td>eliska@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Matylda</td>
-                <td>Matylda Štindlová</td>
-                <td>matylda@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Žofka</td>
-                <td>Žofie Kaliničová</td>
-                <td>zofka@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Lukáš</td>
-                <td>Lukáš Řípa</td>
-                <td>lukas2@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Honza</td>
-                <td>Jan Sklenka</td>
-                <td>honza@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Vláďa</td>
-                <td>Vladimír Kuráň</td>
-                <td>vlada@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Kuba</td>
-                <td>Jakub Pospíšil</td>
-                <td>kuba@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Julča</td>
-                <td>Julie Novotná</td>
-                <td>julca@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Jirka</td>
-                <td>Jiří Bertien</td>
-                <td>jirka@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Greta</td>
-                <td>Margareta Landová</td>
-                <td>greta@kocovnici.cz</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-
-            
-
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto5.jpg" class="card-img-top" alt="Družina Luskouni">
+                    <div class="card-header"><h4>Luskouni</h4></div>
+                    <div class="card-body">
+                        <p class="card-text"><strong>Věk:</strong> 6-9 let</p>
+                        <p class="card-text"><strong>Schůzky:</strong> úterý 17:00 - 19:00</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Vedoucí: Eliška, Lukáš, Kuba</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto6.jpg" class="card-img-top" alt="Družina Medvědi">
+                    <div class="card-header"><h4>Medvědi</h4></div>
+                    <div class="card-body">
+                        <p class="card-text"><strong>Věk:</strong> 8-12 let</p>
+                        <p class="card-text"><strong>Schůzky:</strong> čtvrtek 16:00 - 18:00</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Vedoucí: Marcel, Jirka</small>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
 
+        <h2 class="section-title">Náš Tým</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto1.jpg" class="card-img-top" alt="Marcel Šíp">
+                    <div class="card-body">
+                        <h5 class="card-title">Marcel Šíp <small class="text-muted">(Marcel)</small></h5>
+                        <p class="card-text">Hl. vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: marcel@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto2.jpg" class="card-img-top" alt="Zuzana Baziková">
+                    <div class="card-body">
+                        <h5 class="card-title">Zuzana Baziková <small class="text-muted">(Zůza)</small></h5>
+                        <p class="card-text">Hospodář</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: zuza@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto3.jpg" class="card-img-top" alt="Lukáš Chochlovský">
+                    <div class="card-body">
+                        <h5 class="card-title">Lukáš Chochlovský <small class="text-muted">(Lukáš)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: lukas@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto4.jpg" class="card-img-top" alt="Kateřina Repková">
+                    <div class="card-body">
+                        <h5 class="card-title">Kateřina Repková <small class="text-muted">(Kačka)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: kacka@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto5.jpg" class="card-img-top" alt="Marek Šafra">
+                    <div class="card-body">
+                        <h5 class="card-title">Marek Šafra <small class="text-muted">(Blatník)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: blatnik@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto6.jpg" class="card-img-top" alt="Lucie Řípová">
+                    <div class="card-body">
+                        <h5 class="card-title">Lucie Řípová <small class="text-muted">(Lucka)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: lucka@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto1.jpg" class="card-img-top" alt="Eliška Kuráňová">
+                    <div class="card-body">
+                        <h5 class="card-title">Eliška Kuráňová <small class="text-muted">(Eliška)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: eliska@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto2.jpg" class="card-img-top" alt="Matylda Štindlová">
+                    <div class="card-body">
+                        <h5 class="card-title">Matylda Štindlová <small class="text-muted">(Matylda)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: matylda@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto3.jpg" class="card-img-top" alt="Žofie Kaliničová">
+                    <div class="card-body">
+                        <h5 class="card-title">Žofie Kaliničová <small class="text-muted">(Žofka)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: zofka@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto4.jpg" class="card-img-top" alt="Jan Sklenka">
+                    <div class="card-body">
+                        <h5 class="card-title">Jan Sklenka <small class="text-muted">(Honza)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: honza@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto5.jpg" class="card-img-top" alt="Jakub Pospíšil">
+                    <div class="card-body">
+                        <h5 class="card-title">Jakub Pospíšil <small class="text-muted">(Kuba)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: kuba@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                    <img src="foto6.jpg" class="card-img-top" alt="Jiří Bertien">
+                    <div class="card-body">
+                        <h5 class="card-title">Jiří Bertien <small class="text-muted">(Jirka)</small></h5>
+                        <p class="card-text">Vedoucí</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: jirka@kocovnici.cz">Kontakt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-
-
-    <footer class="bg-light text-center text-lg-start mt-5">
-        <div class="container p-4">
-            <p class="text-center">&copy; Všchna práva vyhrazena atd...</p>
+    <footer class="py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 - 49. PS Kočovníci. Všechna práva vyhrazena.</p>
+            <small>Vytvořeno s láskou k přírodě a dobrodružství.</small>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="planAkciData.js" defer></script>
-    <script src="taboryData.js" defer></script>
-    <script src="themeToggle.js" defer></script>
-    <script src="main.js" defer></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Data a skripty -->
+    <script src="planAkciData.js"></script>
+    <script src="taboryData.js"></script>
+    <script src="themeToggle.js"></script>
+    <script src="main.js"></script>
+    
+    <!-- Skript pro inicializaci popoverů -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+            [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+        });
+    </script>
 </body>
 
 </html>
