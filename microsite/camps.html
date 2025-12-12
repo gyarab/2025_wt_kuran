@@ -13,6 +13,8 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS for interactive map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 
 <body>
@@ -88,9 +90,43 @@
     </main>
 
     <footer class="py-4 mt-auto">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2025 - 49. PS Kočovníci. Všechna práva vyhrazena.</p>
-            <small>Vytvořeno s láskou k přírodě a dobrodružství.</small>
+        <div class="container">
+            <div class="row gy-3 align-items-center">
+                <div class="col-md-5">
+                    <div class="contact-card p-3 rounded shadow-sm">
+                        <h5 class="mb-2">Kontakty & údaje</h5>
+                        <ul class="list-unstyled mb-2 contact-info">
+                            <li><strong>IČO:</strong> 66005752</li>
+                            <li><strong>Účet:</strong> 2700230041/2010</li>
+                            <li><strong>Dat. schránka:</strong> s4s5ecn</li>
+                            <li><strong>Tel.:</strong> <a href="tel:+420731261239">731&nbsp;261&nbsp;239</a></li>
+                            <li><strong>Adresa:</strong> Nad Panenskou 5, Praha 6</li>
+                        </ul>
+                        <div class="social-links" aria-label="Sociální sítě">
+                            <a class="btn btn-outline-primary social-btn" href="https://kocovnici.rajce.idnes.cz/" target="_blank" rel="noopener" aria-label="Rajče - fotogalerie">
+                                <i class="bi bi-image" aria-hidden="true"></i>
+                                <span class="visually-hidden">Rajče</span>
+                            </a>
+                            <a class="btn btn-outline-primary social-btn" href="https://www.facebook.com/kocovnici/" target="_blank" rel="noopener" aria-label="Facebook">
+                                <i class="bi bi-facebook" aria-hidden="true"></i>
+                                <span class="visually-hidden">Facebook</span>
+                            </a>
+                            <a class="btn btn-outline-primary social-btn" href="https://www.instagram.com/kocovnici/" target="_blank" rel="noopener" aria-label="Instagram">
+                                <i class="bi bi-instagram" aria-hidden="true"></i>
+                                <span class="visually-hidden">Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="footer-map-card rounded shadow-sm">
+                        <div id="footer-map" aria-label="Mapa klubovny" style="height:260px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <small class="text-muted">&copy; 2025 - 49. PS Kočovníci. Všechna práva vyhrazena.</small>
+            </div>
         </div>
     </footer>
 
@@ -100,6 +136,8 @@
     <script src="planAkciData.js"></script>
     <script src="taboryData.js"></script>
     <script src="themeToggle.js"></script>
+    <!-- Leaflet JS for interactive map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="main.js"></script>
 </body>
 

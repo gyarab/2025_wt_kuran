@@ -139,3 +139,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// --- Footer map initialization (Leaflet + Nominatim geocoding) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const mapEl = document.getElementById('footer-map');
+    const address = 'Nad Panenskou 5, Praha 6';
+    if (mapEl && typeof L !== 'undefined') {
+        // Initial map (fallback to Prague-ish view until geocoded)
+        const map = L.map('footer-map', { scrollWheelZoom: false }).setView([50.091, 14.398], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Try geocoding the address via Nominatim
+        fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address))
+            .then(response => response.json())
+            .then(results => {
+                if (results && results.length > 0) {
+                    const best = results[0];
+                    const lat = parseFloat(best.lat);
+                    const lon = parseFloat(best.lon);
+                    map.setView([lat, lon], 17);
+                    const marker = L.marker([lat, lon]).addTo(map);
+                    marker.bindPopup(`<strong>Klubovna</strong><br>${address}<br><a href="https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}" target="_blank" rel="noopener">Otevřít v OSM</a>`);
+                } else {
+                    // No results: place a marker near default view
+                    L.marker([50.091, 14.398]).addTo(map).bindPopup(`<strong>Klubovna (přibližně)</strong><br>${address}`);
+                }
+            })
+            .catch(err => {
+                console.warn('Geocoding failed', err);
+                L.marker([50.091, 14.398]).addTo(map).bindPopup(`<strong>Klubovna (přibližně)</strong><br>${address}`);
+            });
+    }
+});
