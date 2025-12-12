@@ -25,9 +25,6 @@ function renderPlanAkciTable() {
             <td>${row.nazev}</td>
             <td>${row.datum}</td>
             <td>${row.info}</td>
-            <td>${row.fotky}</td>
-            <td>${row.clanek}</td>
-            <td>${row.video}</td>
             <td>${row.vedouci}</td>
         `;
         tbody.appendChild(tr);

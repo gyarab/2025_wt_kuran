@@ -1,14 +1,14 @@
 // themeToggle.js
 function toggleTheme() {
-  const body = document.body;
-  const currentTheme = body.getAttribute('data-bs-theme');
+  const htmlEl = document.documentElement;
+  const currentTheme = htmlEl.getAttribute('data-bs-theme') || 'light';
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  body.setAttribute('data-bs-theme', newTheme);
+  htmlEl.setAttribute('data-bs-theme', newTheme);
   localStorage.setItem('theme', newTheme);
 }
 
 // načtení uloženého motivu
 window.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme') || 'light';
-  document.body.setAttribute('data-bs-theme', savedTheme);
+  document.documentElement.setAttribute('data-bs-theme', savedTheme);
 });
