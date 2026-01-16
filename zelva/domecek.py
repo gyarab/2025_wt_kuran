@@ -5,7 +5,7 @@ from random import randint
 
 
 def domecek():
-    x = randint(100, 250)
+    x = randint(50, 350)
     for _ in range(4):
         forward(x)
         left(90)
