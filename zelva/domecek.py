@@ -1,24 +1,23 @@
 from turtle import *
 from math import sqrt
+from random import randint
 
-def domecek(a):
-    forward(a)
-    left(90)
-    forward(a)
-    left(135)
-    forward(sqrt(2*a**2))
-    right(135)
-    forward(a)
-    right(135)
-    forward(sqrt(2*a**2))
-    left(135)
-    forward(a)
-    left(90)
-    forward(a)
-    right(135)
-    forward(sqrt(2*a**2)/2)
-    right(90)
-    forward(sqrt(2*a**2)/2)
 
-domecek(100)
-exitonclick()
+
+def domecek():
+    x = randint(100, 250)
+    for _ in range(4):
+        forward(x)
+        left(90)
+
+    left(45)
+    
+    forward(sqrt(2) * x)
+    
+    for _ in range(2):
+        left(90)
+        forward((sqrt(2) * x)/2)
+    
+    left(90)
+    forward(sqrt(2) * x)
+domecek()
