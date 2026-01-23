@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>49. PS Kočovníci - Tábory</title>
+    <title>49. PS Kočovníci - Plán akcí</title>
     
     <!-- Modern normalize -->
     <link rel="stylesheet" href="https://unpkg.com/modern-normalize/modern-normalize.css">
@@ -36,13 +36,17 @@
             <menu>
                 <li><a href="index.html">Domů</a></li>
                 <li><a href="history.html">Historie</a></li>
-                <li><a href="whatwedo.html">O nás</a></li>
-                <li><a href="camps.html" aria-current="page">Tábory</a></li>
+                <li><a href="whatwedo.html">Co děláme</a></li>
+                <li><a href="camps.html">Tábory</a></li>
                 <li><a href="troops.html">Družiny</a></li>
                 <li><a href="photos.html">Fotky</a></li>
-                <li><a href="schedule.html">Plán akcí</a></li>
+                <li><a href="schedule.html" aria-current="page">Plán akcí</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
-
+                <li>
+                    <a href="https://www.pionyr.cz/" target="_blank">
+                        <img src="images/logopionyr.png" alt="Logo Pionýr">
+                    </a>
+                </li>
                 <li>
                     <button onclick="toggleTheme()" title="Přepnout motiv" aria-label="Přepnout světlý/tmavý režim">
                         <svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor">
@@ -55,42 +59,25 @@
     </nav>
 
     <main class="container">
-        <h1>Naše tábory</h1>
+        <h1>Plán akcí 2025/2026</h1>
+        
         <section>
-            <div class="grid-2">
-                <img src="images/foto5.jpg" alt="Fotka z tábora">
-                <div>
-                    <p>Každoročně pořádáme zimní tábor na horách a letní stanový tábor. Naše akce jsou finančně podporovány Hlavním městem Praha, Městskou částí Praha 6 a MŠMT.</p>
-                    <article class="highlight">
-                        <h2>Letní tábor Ronovec 2025</h2>
-                        <dl>
-                            <dt>Termín:</dt><dd>27.6. – 13.7.2025</dd>
-                            <dt>Sraz:</dt><dd>27.6. 16:30 u klubovny</dd>
-                            <dt>Návrat:</dt><dd>13.7. 13:55 na Hlavní nádraží</dd>
-                        </dl>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Historie táborů</h2>
             <div>
                 <table>
                     <thead>
                         <tr>
-                            <th>Rok</th>
-                            <th>Místo</th>
-                            <th>Téma</th>
+                            <th>Název</th>
+                            <th>Datum</th>
+                            <th>Vedoucí</th>
                         </tr>
                     </thead>
-                    <tbody id="tabory-tbody">
-                        <!-- Data budou načtena z taboryData.js -->
+                    <tbody id="plan-akci-tbody">
+                        <!-- Řádky budou načteny z planAkciData.js -->
                     </tbody>
                 </table>
                 <nav class="nav-buttons">
-                    <button id="tabory-prev" onclick="taboryPrev()">Předchozí</button>
-                    <button id="tabory-next" onclick="taboryNext()">Další</button>
+                    <button id="plan-akci-prev" onclick="planAkciPrev()">Předchozí</button>
+                    <button id="plan-akci-next" onclick="planAkciNext()">Další</button>
                 </nav>
             </div>
         </section>
@@ -98,18 +85,16 @@
 
     <footer>
         <div class="container">
-            <div class="grid-2">
-                <p>&copy; 2025 Pionýr, z.s. - 49. pionýrská skupina Kočovníci</p>
-                <a href="https://www.pionyr.cz/" target="_blank">
-                    <img src="images/pionyr.gif" alt="Pionýr">
-                </a>
-            </div>
+            <small>&copy; 2025 - 49. PS Kočovníci. Všechna práva vyhrazena.</small>
         </div>
     </footer>
 
     <!-- Data a skripty -->
+    <script src="planAkciData.js"></script>
     <script src="taboryData.js"></script>
     <script src="themeToggle.js"></script>
+    <!-- Leaflet JS for interactive map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="main.js"></script>
 </body>
 

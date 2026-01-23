@@ -1,0 +1,91 @@
+
+
+Obsluha výjimek
+Dědičnost
+Sdílení metod
+V obslužné
+
+
+
+2
+
+
+    textArea.addKeyListener(new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            System.out.println("zapsán znak " + e.getKeyChar());
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            System.out.println("stisknuta klávesa id " + e.getKeyCode());
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            System.out.println("uvolněna klávesa id " + e.getKeyCode());
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+3
+
+
+import java.util.Date;
+
+interface Creatable {
+    Date getCreated();
+}
+
+class Creature implements Creatable {
+    Date d;
+
+    Creature() {
+        d = new Date();
+    }
+
+    public Date getCreated() {
+        return d;
+    }
+}
+
+class Human extends Creature {
+    String n;
+
+    Human(String x) {
+        n = x;
+    }
+
+    String getName() {
+        return n;
+    }
+}
+
+class God {
+    public static void main(String[] a) {
+        long t1 = System.nanoTime();
+
+        Creature c;
+        for (int i = 0; i < 100; i++) {
+            c = new Creature();
+        }
+
+        Human h1 = new Human("Adam");
+        Human h2 = new Human("Eva");
+
+        long t2 = System.nanoTime();
+        long r = t2 - t1;
+
+        System.out.println(r);
+    }
+}

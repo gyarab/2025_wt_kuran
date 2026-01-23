@@ -24,13 +24,32 @@ function renderPlanAkciTable() {
         tr.innerHTML = `
             <td>${row.nazev}</td>
             <td>${row.datum}</td>
-            <td>${row.info}</td>
             <td>${row.vedouci}</td>
         `;
         tbody.appendChild(tr);
     }
     document.getElementById('plan-akci-prev').disabled = planAkciPage === 0;
     document.getElementById('plan-akci-next').disabled = end >= planAkciData.length;
+}
+
+function renderUpcomingEvents() {
+    if (typeof planAkciData === 'undefined') return;
+    const tbody = document.getElementById('upcoming-events-tbody');
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+    const upcomingCount = Math.min(3, planAkciData.length);
+
+    for (let i = 0; i < upcomingCount; i++) {
+        const row = planAkciData[i];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${row.nazev}</td>
+            <td>${row.datum}</td>
+            <td>${row.vedouci}</td>
+        `;
+        tbody.appendChild(tr);
+    }
 }
 
 function renderTaboryTable() {
@@ -99,6 +118,7 @@ window.taboryNext = function() {
 document.addEventListener('DOMContentLoaded', () => {
     // Initial rendering of tables
     renderPlanAkciTable();
+    renderUpcomingEvents();
     renderTaboryTable();
 
     // Lightbox for photo gallery

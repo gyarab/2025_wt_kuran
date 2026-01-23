@@ -1,305 +1,218 @@
 <!DOCTYPE html>
-<html lang="cs" data-bs-theme="light">
+<html lang="cs" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>49. PS Kočovníci - Družiny</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Bootstrap Icons for theme switcher -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+
+    <!-- Modern normalize -->
+    <link rel="stylesheet" href="https://unpkg.com/modern-normalize/modern-normalize.css">
+
+    <!-- Open Props -->
+    <link rel="stylesheet" href="https://unpkg.com/open-props">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
     <!-- Leaflet CSS for interactive map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 
 <body>
     <!-- Navigace -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+    <nav>
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="logo.png" alt="Logo Kočovníci" class="me-2">
-                49. PS Kočovníci
+            <a href="index.html">
+                <img src="images/logo.png" alt="Logo Kočovníci">
+                <span>49. pionýrská skupina Kočovníci</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Domů</a></li>
-                    <li class="nav-item"><a class="nav-link" href="history.html">Historie</a></li>
-                    <li class="nav-item"><a class="nav-link" href="whatwedo.html">Co děláme</a></li>
-                    <li class="nav-item"><a class="nav-link" href="camps.html">Tábory</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="troops.html">Družiny</a></li>
-                    <li class="nav-item"><a class="nav-link" href="photos.html">Fotky</a></li>
-                </ul>
-                <div class="d-flex align-items-center">
-                    <a class="navbar-brand" href="https://www.pionyr.cz/" target="_blank">
-                        <img src="logopionyr.png" alt="Logo Pionýr" style="height:36px;">
-                    </a>
-                    <i class="bi bi-circle-half theme-toggle" onclick="toggleTheme()" title="Přepnout motiv"></i>
-                </div>
-            </div>
+            <input type="checkbox" id="nav-toggle" hidden>
+            <label for="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <menu>
+                <li><a href="index.html">Domů</a></li>
+                <li><a href="history.html">Historie</a></li>
+                <li><a href="whatwedo.html">O nás</a></li>
+                <li><a href="camps.html">Tábory</a></li>
+                <li><a href="troops.html" aria-current="page">Družiny</a></li>
+                <li><a href="photos.html">Fotky</a></li>
+                <li><a href="schedule.html">Plán akcí</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+
+                <li>
+                    <button onclick="toggleTheme()" title="Přepnout motiv" aria-label="Přepnout světlý/tmavý režim">
+                        <svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor">
+                            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                        </svg>
+                    </button>
+                </li>
+            </menu>
         </div>
     </nav>
 
-    <main class="container section">
-        <h1 class="section-title">Naše družiny</h1>
-        <p class="text-center lead mb-4">Výše členského příspěvku je stanovena na <strong>800 Kč</strong> na člena na rok.</p>
+    <main class="container">
 
-        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto4.jpg" class="card-img-top" alt="Družina Jeleni">
-                    <div class="card-header"><h4>Jeleni</h4></div>
-                    <div class="card-body">
-                        <p class="card-text"><strong>Věk:</strong> 12-15 let</p>
-                        <p class="card-text"><strong>Schůzky:</strong> pondělí 17:30 - 19:30</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Vedoucí: Matylda, Honza</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto5.jpg" class="card-img-top" alt="Družina Luskouni">
-                    <div class="card-header"><h4>Luskouni</h4></div>
-                    <div class="card-body">
-                        <p class="card-text"><strong>Věk:</strong> 6-9 let</p>
-                        <p class="card-text"><strong>Schůzky:</strong> úterý 17:00 - 19:00</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Vedoucí: Eliška, Lukáš, Kuba</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto6.jpg" class="card-img-top" alt="Družina Medvědi">
-                    <div class="card-header"><h4>Medvědi</h4></div>
-                    <div class="card-body">
-                        <p class="card-text"><strong>Věk:</strong> 8-12 let</p>
-                        <p class="card-text"><strong>Schůzky:</strong> čtvrtek 16:00 - 18:00</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Vedoucí: Marcel, Jirka</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <section id="clenstvi">
+            <h2>Členství</h2>
+            <p>Výše členského příspěvku je stanovena na <strong>800 Kč</strong> na člena na rok.</p>
+        </section>
 
-        <h2 class="section-title">Náš Tým</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto1.jpg" class="card-img-top" alt="Marcel Šíp">
-                    <div class="card-body">
-                        <h5 class="card-title">Marcel Šíp <small class="text-muted">(Marcel)</small></h5>
-                        <p class="card-text">Hl. vedoucí</p>
+        <section id="druziny">
+            <h2>Družiny</h2>
+            <div class="cards-grid">
+                <article class="card">
+                    <img src="images/foto4.jpg" alt="Družina Jeleni">
+                    <header>
+                        <h2>Jeleni</h2>
+                    </header>
+                    <div>
+                        <p><strong>Věk:</strong> 12-15 let</p>
+                        <p><strong>Schůzky:</strong> pondělí 17:30 - 19:30</p>
                     </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: marcel@kocovnici.cz">Kontakt</button>
+                </article>
+                <article class="card">
+                    <img src="images/foto5.jpg" alt="Družina Luskouni">
+                    <header>
+                        <h2>Luskouni</h2>
+                    </header>
+                    <div>
+                        <p><strong>Věk:</strong> 6-9 let</p>
+                        <p><strong>Schůzky:</strong> úterý 17:00 - 19:00</p>
                     </div>
-                </div>
+                </article>
+                <article class="card">
+                    <img src="images/foto6.jpg" alt="Družina Medvědi">
+                    <header>
+                        <h2>Medvědi</h2>
+                    </header>
+                    <div>
+                        <p><strong>Věk:</strong> 8-12 let</p>
+                        <p><strong>Schůzky:</strong> čtvrtek 16:00 - 18:00</p>
+                    </div>
+                </article>
             </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto2.jpg" class="card-img-top" alt="Zuzana Baziková">
-                    <div class="card-body">
-                        <h5 class="card-title">Zuzana Baziková <small class="text-muted">(Zůza)</small></h5>
-                        <p class="card-text">Hospodář</p>
+        </section>
+
+        <section id="vedouci">
+            <h2>Vedoucí</h2>
+            <div class="cards-grid">
+                <article class="card">
+                    <img src="images/foto1.jpg" alt="Marcel Šíp">
+                    <div>
+                        <h3>Marcel Šíp <small>(Marcel)</small></h3>
+                        <p>Hl. vedoucí</p>
                     </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: zuza@kocovnici.cz">Kontakt</button>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto2.jpg" alt="Zuzana Baziková">
+                    <div>
+                        <h3>Zuzana Baziková <small>(Zůza)</small></h3>
+                        <p>Hospodář</p>
                     </div>
-                </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto3.jpg" alt="Lukáš Chochlovský">
+                    <div>
+                        <h3>Lukáš Chochlovský <small>(Lukáš)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto4.jpg" alt="Kateřina Repková">
+                    <div>
+                        <h3>Kateřina Repková <small>(Kačka)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto5.jpg" alt="Marek Šafra">
+                    <div>
+                        <h3>Marek Šafra <small>(Blatník)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto6.jpg" alt="Lucie Řípová">
+                    <div>
+                        <h3>Lucie Řípová <small>(Lucka)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto1.jpg" alt="Eliška Kuráňová">
+                    <div>
+                        <h3>Eliška Kuráňová <small>(Eliška)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto2.jpg" alt="Matylda Štindlová">
+                    <div>
+                        <h3>Matylda Štindlová <small>(Matylda)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto3.jpg" alt="Žofie Kaliničová">
+                    <div>
+                        <h3>Žofie Kaliničová <small>(Žofka)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto4.jpg" alt="Jan Sklenka">
+                    <div>
+                        <h3>Jan Sklenka <small>(Honza)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto5.jpg" alt="Jakub Pospíšil">
+                    <div>
+                        <h3>Jakub Pospíšil <small>(Kuba)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
+                <article class="card">
+                    <img src="images/foto6.jpg" alt="Jiří Bertien">
+                    <div>
+                        <h3>Jiří Bertien <small>(Jirka)</small></h3>
+                        <p>Vedoucí</p>
+                    </div>
+                    <footer>Kontakt</footer>
+                </article>
             </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto3.jpg" class="card-img-top" alt="Lukáš Chochlovský">
-                    <div class="card-body">
-                        <h5 class="card-title">Lukáš Chochlovský <small class="text-muted">(Lukáš)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: lukas@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto4.jpg" class="card-img-top" alt="Kateřina Repková">
-                    <div class="card-body">
-                        <h5 class="card-title">Kateřina Repková <small class="text-muted">(Kačka)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: kacka@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto5.jpg" class="card-img-top" alt="Marek Šafra">
-                    <div class="card-body">
-                        <h5 class="card-title">Marek Šafra <small class="text-muted">(Blatník)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: blatnik@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto6.jpg" class="card-img-top" alt="Lucie Řípová">
-                    <div class="card-body">
-                        <h5 class="card-title">Lucie Řípová <small class="text-muted">(Lucka)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: lucka@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto1.jpg" class="card-img-top" alt="Eliška Kuráňová">
-                    <div class="card-body">
-                        <h5 class="card-title">Eliška Kuráňová <small class="text-muted">(Eliška)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: eliska@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto2.jpg" class="card-img-top" alt="Matylda Štindlová">
-                    <div class="card-body">
-                        <h5 class="card-title">Matylda Štindlová <small class="text-muted">(Matylda)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: matylda@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto3.jpg" class="card-img-top" alt="Žofie Kaliničová">
-                    <div class="card-body">
-                        <h5 class="card-title">Žofie Kaliničová <small class="text-muted">(Žofka)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: zofka@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto4.jpg" class="card-img-top" alt="Jan Sklenka">
-                    <div class="card-body">
-                        <h5 class="card-title">Jan Sklenka <small class="text-muted">(Honza)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: honza@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto5.jpg" class="card-img-top" alt="Jakub Pospíšil">
-                    <div class="card-body">
-                        <h5 class="card-title">Jakub Pospíšil <small class="text-muted">(Kuba)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: kuba@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center shadow">
-                    <img src="foto6.jpg" class="card-img-top" alt="Jiří Bertien">
-                    <div class="card-body">
-                        <h5 class="card-title">Jiří Bertien <small class="text-muted">(Jirka)</small></h5>
-                        <p class="card-text">Vedoucí</p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="popover" title="Kontakt" data-bs-content="Email: jirka@kocovnici.cz">Kontakt</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
     </main>
 
-    <footer class="py-4 mt-auto">
+    <footer>
         <div class="container">
-            <div class="row gy-3 align-items-center">
-                <div class="col-md-5">
-                    <div class="contact-card p-3 rounded shadow-sm">
-                        <h5 class="mb-2">Kontakty & údaje</h5>
-                        <ul class="list-unstyled mb-2 contact-info">
-                            <li><strong>IČO:</strong> 66005752</li>
-                            <li><strong>Účet:</strong> 2700230041/2010</li>
-                            <li><strong>Dat. schránka:</strong> s4s5ecn</li>
-                            <li><strong>Tel.:</strong> <a href="tel:+420731261239">731&nbsp;261&nbsp;239</a></li>
-                            <li><strong>Adresa:</strong> Nad Panenskou 5, Praha 6</li>
-                        </ul>
-                        <div class="social-links" aria-label="Sociální sítě">
-                            <a class="btn btn-outline-primary social-btn" href="https://kocovnici.rajce.idnes.cz/" target="_blank" rel="noopener" aria-label="Rajče - fotogalerie">
-                                <i class="bi bi-image" aria-hidden="true"></i>
-                                <span class="visually-hidden">Rajče</span>
-                            </a>
-                            <a class="btn btn-outline-primary social-btn" href="https://www.facebook.com/kocovnici/" target="_blank" rel="noopener" aria-label="Facebook">
-                                <i class="bi bi-facebook" aria-hidden="true"></i>
-                                <span class="visually-hidden">Facebook</span>
-                            </a>
-                            <a class="btn btn-outline-primary social-btn" href="https://www.instagram.com/kocovnici/" target="_blank" rel="noopener" aria-label="Instagram">
-                                <i class="bi bi-instagram" aria-hidden="true"></i>
-                                <span class="visually-hidden">Instagram</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="footer-map-card rounded shadow-sm">
-                        <div id="footer-map" aria-label="Mapa klubovny" style="height:260px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-3">
-                <small class="text-muted">&copy; 2025 - 49. PS Kočovníci. Všechna práva vyhrazena.</small>
+            <div class="grid-2">
+                <p>&copy; 2025 Pionýr, z.s. - 49. pionýrská skupina Kočovníci</p>
+                <a href="https://www.pionyr.cz/" target="_blank">
+                    <img src="images/pionyr.gif" alt="Pionýr">
+                </a>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- Data a skripty -->
-    <script src="planAkciData.js"></script>
-    <script src="taboryData.js"></script>
     <script src="themeToggle.js"></script>
-    <!-- Leaflet JS for interactive map -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="main.js"></script>
-    
-    <!-- Skript pro inicializaci popoverů -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-            [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
-        });
-    </script>
 </body>
 
 </html>
