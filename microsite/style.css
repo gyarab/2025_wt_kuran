@@ -14,6 +14,49 @@
   --transition: var(--ease-3) var(--speed-3);
 }
 
+/* --- nové: globální tématické proměnné a kontrastní pravidla --- */
+html[data-theme="light"] {
+  /* primární barva textu pro UI komponenty ve světlém módu */
+  --ui-foreground: #061223; /* tmavá, čitelná na světlém pozadí */
+  --link-bg: var(--white);
+  --link-border: rgba(0,0,0,0.08);
+  --button-bg: var(--navy-blue);
+  --button-text: var(--white);
+}
+
+html[data-theme="dark"] {
+  --ui-foreground: #e6eef8; /* světlá pro tmavé pozadí */
+  --link-bg: #1e1e1e;
+  --link-border: rgba(255,255,255,0.1);
+  --button-bg: var(--black);
+  --button-text: var(--white);
+}
+
+/* Aplikovat čitelnou barvu tam, kde to dříve chybělo (nevztahovat se na hlavní navigační odkazy) */
+.link-list a,
+.link-list a span,
+.link-list a svg {
+  color: var(--ui-foreground);
+  fill: currentColor; /* svg ikonky zdědí barvu textu */
+}
+
+/* zajistit hranici a pozadí link-list položek podle tématu */
+.link-list a {
+  background: var(--link-bg);
+  border-color: var(--link-border);
+}
+
+/* tlačítka a obecné akční prvky používat tematické barvy */
+button,
+.button,
+.cards-grid .card footer button {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+/* malé doladění: zachovat stín/opacity ikon, ale použít správnou barvu */
+.link-list a svg { opacity: 0.9; }
+
 /* Reset a základní styly */
 * {
   margin: 0;
@@ -521,9 +564,30 @@ button, .button {
   width: fit-content;
 }
 
-button:hover, .button:hover {
-  background: var(--yellow);
-  color: var(--black);
+/* původní hover přepisujeme tematicky níže */
+
+/* Light-mode: odstranit tmavé mezery mezi tlačítky a zabránit ztmavnutí na hover */
+html[data-theme="light"] button,
+html[data-theme="light"] .button,
+html[data-theme="light"] .cards-grid .card footer button {
+  background: var(--navy-blue);
+  color: var(--white);
+  border: 1px solid rgba(0,0,0,0.06); /* jemná hrana, aby mezi tlačítky nebyla tmavá mezera */
+  box-shadow: none;
+  margin: 0;                /* odstranit vnější mezery */
+  vertical-align: middle;   /* sjednotit zarovnání v řadě tlačítek */
+  transform: none;
+}
+
+/* Na hover v light módu necháme barvu beze změny (jen lehký zdvih pro feedback) */
+html[data-theme="light"] button:hover,
+html[data-theme="light"] .button:hover,
+html[data-theme="light"] .cards-grid .card footer button:hover {
+  background: var(--navy-blue);
+  color: var(--white);
+  border-color: rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
 }
 
 /* Footer */
