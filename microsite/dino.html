@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>49. PS Kočovníci - Dino Game</title>
+
+    <!-- Modern normalize -->
+    <link rel="stylesheet" href="https://unpkg.com/modern-normalize/modern-normalize.css">
+
+    <!-- Open Props -->
+    <link rel="stylesheet" href="https://unpkg.com/open-props">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f7f7f7;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+        }
+        #game-container {
+            position: relative;
+            width: 600px;
+            height: 200px;
+            background-color: #fff;
+            border-bottom: 2px solid #535353;
+            overflow: hidden;
+        }
+        #dino {
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            width: 40px;
+            height: 40px;
+            background-image: url('images/dino.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .enemy {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-image: url('images/enemy.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .cactus {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            background-image: url('images/cactus.jpg');
+            background-size: 100% 100%;
+        }
+        #score {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 20px;
+            color: #535353;
+        }
+        #message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: block;
+            font-size: 1.2em;
+            color: #535353;
+        }
+    </style>
+</head>
+<body>
+
+        <nav>
+        <div class="container">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Logo Kočovníci">
+                <span>49. pionýrská skupina Kočovníci</span>
+            </a>
+            <input type="checkbox" id="nav-toggle" hidden>
+            <label for="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <menu>
+                <li><a href="index.html" aria-current="page">Domů</a></li>
+                <li><a href="history.html">Historie</a></li>
+                <li><a href="whatwedo.html">O nás</a></li>
+                <li><a href="camps.html">Tábory</a></li>
+                <li><a href="troops.html">Družiny</a></li>
+                <li><a href="photos.html">Fotky</a></li>
+                <li><a href="schedule.html">Plán akcí</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+
+                <li>
+                    <button onclick="toggleTheme()" title="Přepnout motiv" aria-label="Přepnout světlý/tmavý režim">
+                        <svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor">
+                            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                        </svg>
+                    </button>
+                </li>
+            </menu>
+        </div>
+    </nav>
+
+
+
+
+    <div id="game-container">
+        <div id="score">0</div>
+        <div id="dino"></div>
+        <div id="message">
+            Stiskni mezerník pro start
+        </div>
+    </div>
+
+    <script>
+        const dino = document.getElementById('dino');
+        const gameContainer = document.getElementById('game-container');
+        const scoreDisplay = document.getElementById('score');
+        const message = document.getElementById('message');
+
+        let isJumping = false;
+        let isGameOver = true;
+        let score = 0;
+        let gameLoopInterval;
+        let obstacleGeneratorInterval;
+        let gameSpeed = 5;
+        let obstacleIntervalTime = 2000;
+
+        let dinoY = 0;
+        let dinoVelocity = 0;
+        const gravity = -0.6; 
+        const jumpPower = 14; 
+
+        let obstacles = [];
+
+        document.addEventListener('keydown', handleInput);
+        document.addEventListener('click', handleInput);
+        document.addEventListener('touchstart', handleInput);
+
+        function handleInput(e) {
+            if (e.code === 'Space' || e.type === 'touchstart') {
+                e.preventDefault();
+                if (isGameOver) {
+                    startGame();
+                } else if (!isJumping) {
+                    jump();
+                }
+            }
+        }
+
+        function startGame() {
+            isGameOver = false;
+            score = 0;
+            gameSpeed = 5;
+            obstacleIntervalTime = 2000;
+            scoreDisplay.innerText = 0;
+            message.style.display = 'none';
+            dinoY = 0;
+            dino.style.bottom = dinoY + 'px';
+            isJumping = false;
+
+            obstacles.forEach(obstacle => obstacle.element.remove());
+            obstacles = [];
+
+            clearInterval(gameLoopInterval);
+            gameLoopInterval = setInterval(gameLoop, 20);
+            clearInterval(obstacleGeneratorInterval);
+            obstacleGeneratorInterval = setInterval(createObstacle, obstacleIntervalTime);
+        }
+
+        function jump() {
+            if (!isJumping) {
+                isJumping = true;
+                dinoVelocity = jumpPower;
+            }
+        }
+
+        function createObstacle() {
+            if (isGameOver) return;
+
+            const obstacle = {};
+            obstacle.element = document.createElement('div');
+            obstacle.element.style.left = gameContainer.offsetWidth + 'px';
+
+            const isFlyingType = Math.random() > 0.5 && Math.floor(score / 10) > 50;
+
+            if (isFlyingType) {
+                obstacle.element.classList.add('enemy');
+                obstacle.element.style.bottom = '75px';
+            } else {
+                obstacle.element.classList.add('cactus');
+                const randomHeight = Math.floor(Math.random() * 40) + 20;
+                obstacle.element.style.height = randomHeight + 'px';
+            }
+
+            gameContainer.appendChild(obstacle.element);
+            obstacles.push(obstacle);
+        }
+
+        function gameLoop() {
+            if (isGameOver) return;
+
+            if (isJumping) {
+                dinoVelocity += gravity;
+                dinoY += dinoVelocity;
+            }
+
+            if (dinoY <= 0) {
+                dinoY = 0;
+                isJumping = false;
+                dinoVelocity = 0;
+            }
+            dino.style.bottom = dinoY + 'px';
+
+            const dinoRect = dino.getBoundingClientRect();
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                const obstacle = obstacles[i];
+                let obstacleX = obstacle.element.offsetLeft;
+                obstacleX -= gameSpeed;
+                obstacle.element.style.left = obstacleX + 'px';
+
+                const obstacleRect = obstacle.element.getBoundingClientRect();
+                if (
+                    dinoRect.right > obstacleRect.left &&
+                    dinoRect.left < obstacleRect.right &&
+                    dinoRect.bottom > obstacleRect.top &&
+                    dinoRect.top < obstacleRect.bottom
+                ) {
+                    endGame();
+                    return;
+                }
+
+                if (obstacleX < -obstacle.element.offsetWidth) {
+                    obstacles.splice(i, 1);
+                    obstacle.element.remove();
+                }
+            }
+
+            score++;
+            scoreDisplay.innerText = Math.floor(score / 10);
+
+            if (score > 0 && score % 500 === 0) { 
+                gameSpeed += 0.7;
+                if (obstacleIntervalTime > 800) { 
+                    obstacleIntervalTime -= 100;
+                    clearInterval(obstacleGeneratorInterval);
+                    obstacleGeneratorInterval = setInterval(createObstacle, obstacleIntervalTime);
+                }
+            }
+        }
+
+        function endGame() {
+            isGameOver = true;
+            clearInterval(gameLoopInterval);
+            clearInterval(obstacleGeneratorInterval);
+
+            message.innerHTML = `Game Over<br>Skóre: ${Math.floor(score / 10)}<br>Stiskni mezerník pro restart`;
+            message.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
