@@ -671,6 +671,10 @@ footer img {
   flex-direction: column;
   gap: var(--size-2);
   margin: var(--size-5) 0;
+  /* Reset nav styles */
+  background: transparent;
+  box-shadow: none;
+  position: static;
 }
 
 .link-list a {
@@ -682,6 +686,11 @@ footer img {
   border-radius: var(--radius);
   border: 1px solid rgba(0, 0, 0, 0.1);
   transition: all var(--transition);
+}
+
+[data-theme="dark"] .link-list {
+  background: transparent;
+  box-shadow: none;
 }
 
 [data-theme="dark"] .link-list a {
@@ -832,4 +841,3 @@ dialog .carousel button:first-of-type {
 dialog .carousel button:last-of-type {
   right: var(--size-3);
 }
-
