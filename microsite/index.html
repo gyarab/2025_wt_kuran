@@ -17,6 +17,7 @@
 
     <!-- Leaflet CSS for interactive map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
 </head>
 
 <body>
@@ -123,33 +124,41 @@
             <!-- aktuality z FB -->
             <section id="aktualne">
                 <h2>Aktuálně</h2>
-                <article>
-                    <div class="fb-page" data-href="https://www.facebook.com/kocovnici" data-tabs="timeline"
-                        data-width="500" data-height="800" data-small-header="true" data-adapt-container-width="true"
-                        data-hide-cover="true" data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/kocovnici" class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/kocovnici">Turistický oddíl Kočovníci</a>
-                        </blockquote>
-                    </div>
-                </article>
+                <div class="grid-3">
+                    <!-- Elfsight Facebook Feed | Untitled Facebook Feed -->
+                    <div class="elfsight-app-26014ea4-2c33-4610-98bc-abe0b4ecdcce" data-elfsight-app-lazy></div>
+                    <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
+                    <div class="elfsight-app-ced4a9c4-183b-4e29-9ea1-228bfcc3a39c" data-elfsight-app-lazy></div>
+                    <!-- Elfsight YouTube Gallery | Untitled YouTube Gallery -->
+                    <div class="elfsight-app-f2286efa-1533-4837-851f-87315d92bb83" data-elfsight-app-lazy></div>
+                </div>
+                        
             </section>
 
-            <!-- aktuality z FB -->
+
+
+            <!-- Podpora -->
             <section id="podpora">
                 <h2>Naši činnost podporují</h2>
                 <div class="cards-grid">
-                    <div class="card">
+                    <a href="https://www.praha.eu/" target="_blank" rel="noopener" class="card">
                         <img src="images/logo_hmp.png" alt="Logo Hlavního města Prahy">
-                        <p>Hlavní město Praha</p>
-                    </div>
-                    <div class="card">
-                        <img src="images/logo_hmp.png" alt="Logo Hlavního města Prahy">
-                        <p>Hlavní město Praha</p>
-                    </div>
-                    <div class="card">
-                        <img src="images/logo_hmp.png" alt="Logo Hlavního města Prahy">
-                        <p>Hlavní město Praha</p>
-                    </div>
+                        <div>
+                            <p>Hlavní město Praha</p>
+                        </div>
+                    </a>
+                    <a href="https://www.msmt.cz/" target="_blank" rel="noopener" class="card">
+                        <img src="images/MSMT.png" alt="MŠMT">
+                        <div>
+                            <p>Ministerstvo školství, mládeže a tělovýchovy</p>
+                        </div>
+                    </a>
+                    <a href="https://www.praha6.cz/" target="_blank" rel="noopener" class="card">
+                        <img src="images/praha6_logo.jpg" alt="MČ Praha 6">
+                        <div>
+                            <p>Městská část Praha 6</p>
+                        </div>
+                    </a>
                 </div>
             </section>
         </div>
@@ -157,16 +166,15 @@
 
     <footer>
         <div class="container">
-            <div class="grid-2">
-                <p>&copy; 2025 Pionýr, z.s. - 49. pionýrská skupina Kočovníci</p>
-                <a href="https://www.pionyr.cz/" target="_blank">
-                    <img src="images/pionyr.gif" alt="Pionýr">
-                </a>
-            </div>
+            <p>&copy; 2025 Pionýr, z.s. - 49. pionýrská skupina Kočovníci</p>
+            <a href="https://www.pionyr.cz/" target="_blank">
+                <img src="images/pionyr.gif" alt="Pionýr">
+            </a>
         </div>
     </footer>
 
     <!-- Data a skripty -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
     <script src="planAkciData.js"></script>
     <script src="themeToggle.js"></script>
     <script src="main.js"></script>

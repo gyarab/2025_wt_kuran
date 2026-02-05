@@ -419,6 +419,29 @@ tbody tr:hover {
   }
 }
 
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--size-5, 2rem);
+}
+
+.grid-3 > div {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    overflow: hidden;
+}
+
+.grid-3 > div > :first-child {
+    flex-grow: 1;
+}
+
+@media (max-width: 992px) {
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
 .grid-2 img {
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
