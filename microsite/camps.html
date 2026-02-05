@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html lang="cs" data-theme="light">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>49. PS Kočovníci - Hlavní stránka</title>
-
-    <!-- Modern normalize -->
-    <link rel="stylesheet" href="https://unpkg.com/modern-normalize/modern-normalize.css">
-
-    <!-- Open Props -->
-    <link rel="stylesheet" href="https://unpkg.com/open-props">
-
-    <!-- Custom CSS -->
+    <title>49. PS Kočovníci - Tábory</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Leaflet CSS for interactive map -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/open-props"/>
 </head>
-
 <body>
-    <!-- Navigace -->
+
     <nav>
         <div class="container">
             <a href="index.html">
@@ -34,15 +22,14 @@
                 <span></span>
             </label>
             <menu>
-                <li><a href="index.html" aria-current="page">Domů</a></li>
+                <li><a href="index.html">Domů</a></li>
                 <li><a href="history.html">Historie</a></li>
                 <li><a href="whatwedo.html">O nás</a></li>
-                <li><a href="camps.html">Tábory</a></li>
+                <li><a href="camps.html" aria-current="page">Tábory</a></li>
                 <li><a href="troops.html">Družiny</a></li>
                 <li><a href="photos.html">Fotky</a></li>
                 <li><a href="schedule.html">Plán akcí</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
-
                 <li>
                     <button onclick="toggleTheme()" title="Přepnout motiv" aria-label="Přepnout světlý/tmavý režim">
                         <svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor">
@@ -54,47 +41,123 @@
         </div>
     </nav>
 
-
     <main class="container">
-        <h1>Naše tábory</h1>
         <section>
-            <div class="grid-2">
-                <img src="images/foto5.jpg" alt="Fotka z tábora">
-                <div>
-                    <p>Každoročně pořádáme zimní tábor na horách a letní stanový tábor. Naše akce jsou finančně podporovány Hlavním městem Praha, Městskou částí Praha 6 a MŠMT.</p>
-                    <article class="highlight">
-                        <h2>Letní tábor Ronovec 2025</h2>
-                        <dl>
-                            <dt>Termín:</dt><dd>27.6. – 13.7.2025</dd>
-                            <dt>Sraz:</dt><dd>27.6. 16:30 u klubovny</dd>
-                            <dt>Návrat:</dt><dd>13.7. 13:55 na Hlavní nádraží</dd>
-                        </dl>
+            <h1>Tábory</h1>
+            <article>
+                <p>Každoročně pořádáme zimní tábor na horách v termínu jarních prázdnin Prahy 6 a letní stanový tábor prvních 14 dní v červenci. Tábory a činnost oddílu finančně podporují Hlavní město Praha, Městská část Praha 6 a Ministerstvo školství, mládeže a tělovýchovy.</p>
+                <div class="sponsors">
+                    <img src="images/logo_hmp.png" alt="Hlavní město Praha" title="Hlavní město Praha"/>
+                    <img src="images/praha6_logo.jpg" alt="Městská část Praha 6" title="Městská část Praha 6"/>
+                    <img src="images/MSMT.png" alt="Ministerstvo školství, mládeže a tělovýchovy" title="Ministerstvo školství, mládeže a tělovýchovy"/>
+                </div>
+            </article>
+        </section>
+
+        <div class="camp-toggle-buttons">
+            <button id="zimni-tabor-btn" class="active">Zimní tábor</button>
+            <button id="letni-tabor-btn">Letní tábor</button>
+        </div>
+
+        <div id="zimni-tabor" class="camp-content">
+            <section>
+                <h2>Jarní tábor Pernink 2026</h2>
+                <div class="grid-2">
+                    <article>
+                        <h3>Termín: 21.2. - 28.2.2026</h3>
+                        <p><strong>Sraz:</strong> 21.2. 11:45 u klubovny</p>
+                        <p><strong>Návrat:</strong> 28.2. 12:00 u klubovny</p>
+                    </article>
+                    <article>
+                        <h3>Cena: 3900 Kč pro členy, 4300 Kč pro ostatní</h3>
+                        <p>Informace k placení najdete níže. V ceně nejsou zahrnuty vleky (předběžně cca 2500 Kč)!</p>
                     </article>
                 </div>
-            </div>
-        </section>
+                <div class="grid-2">
+                    <img src="images/foto1.jpg" alt="Zimní tábor ilustrační foto" class="camp-image">
+                    <article>
+                        <h3>Lokalita a program</h3>
+                        <p>Jarní tábor se koná v chatě Archa v Perninku v Krušných horách. Na programu bude především lyžování na sjezdovkách (<a href="https://www.plesivec.cz/" title="Skiareál Plešivec">Skiareál Plešivec</a>) a běžkách. Večer nás čekají zábavné hry.</p>
+                    </article>
+                </div>
+                 <div class="grid-2">
+                    <article>
+                        <h3>Co si vzít s sebou?</h3>
+                        <ul>
+                            <li>Vybavení dle <a href="dokumenty/DSV_jarnaky.pdf">doporučeného seznamu</a></li>
+                            <li>Seřízené sjezdovky a běžky</li>
+                            <li>Povlečení nebo spacák</li>
+                            <li>Sobotní oběd</li>
+                        </ul>
+                    </article>
+                    <img src="images/foto3.jpg" alt="Zimní tábor ilustrační foto 2" class="camp-image">
+                </div>
+                <article>
+                    <h3>Jaké dokumenty od vás potřebujeme?</h3>
+                    <ul>
+                        <li><a href="dokumenty/zpusobilost_deti.pdf">Potvrzení o způsobilosti</a> od lékaře (platnost 2 roky).</li>
+                        <li>Kopii kartičky pojištěnce.</li>
+                        <li><a href="dokumenty/bezinfekcnost_a_souhlas.pdf">Prohlášení o bezinfekčnosti</a> (ne starší než 1 den).</li>
+                    </ul>
+                    <p>Dokumenty pošlete na <a href="mailto:info@kocovnici.cz">info@kocovnici.cz</a> nebo přineste na sraz.</p>
+                </article>
+                <article>
+                    <h3>Chcete vědět víc?</h3>
+                    <p>Další informace rádi podáme na emailu <a href="mailto:info@kocovnici.cz">info@kocovnici.cz</a>, či na telefonu 777 937 167 (hl. vedoucí Marcel Šíp).</p>
+                    <p>Fotky z minulého tábora najdete v naší <a href="https://www.rajce.idnes.cz/kocovnici/album/jarnaky-sedlonov-15-22-2-2025">fotogalerii</a>.</p>
+                </article>
+                <article>
+                    <h3>Platba</h3>
+                    <p>Účastnický poplatek <strong>3900 Kč (členové)</strong> nebo <strong>4300 Kč (ostatní)</strong> pošlete na účet 2700230041/2010 do 8.2.2026. Zálohu na vleky <strong>2500 Kč</strong> pošlete jako samostatnou platbu.</p>
+                </article>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeBtgnpGM7euYb5aFgHzY4lX95YFpu3H_Yi7I4YlpgbqKWHqQ/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Načítání…</iframe>
+            </section>
+        </div>
 
-        <section>
-            <h2>Historie táborů</h2>
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rok</th>
-                            <th>Místo</th>
-                            <th>Téma</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabory-tbody">
-                        <!-- Data budou načtena z taboryData.js -->
-                    </tbody>
-                </table>
-                <nav class="nav-buttons">
-                    <button id="tabory-prev" onclick="taboryPrev()">Předchozí</button>
-                    <button id="tabory-next" onclick="taboryNext()">Další</button>
-                </nav>
-            </div>
-        </section>
+        <div id="letni-tabor" class="camp-content" style="display: none;">
+            <section>
+                <h2>Letní tábor Ronovec 2025</h2>
+                 <div class="grid-2">
+                    <article>
+                        <h3>Termín: 27.6. - 13.7.2025</h3>
+                        <p><strong>Sraz:</strong> 27.6. 16:30 u klubovny</p>
+                        <p><strong>Návrat:</strong> 13.7. 13:55 na Hlavní nádraží</p>
+                        <p><strong>Návštěvní den:</strong> sobota 12.7., s možností přespání.</p>
+                    </article>
+                    <article>
+                        <h3>Cena: 3500 Kč pro členy, 4000 Kč pro veřejnost</h3>
+                        <p>Informace k platbě najdete níže.</p>
+                    </article>
+                </div>
+                <div class="grid-2">
+                    <img src="images/foto2.jpg" alt="Letní tábor ilustrační foto" class="camp-image">
+                    <article>
+                        <h3>Lokalita a program</h3>
+                        <p>Tábořiště u hradu Ronovec. Stany si stavíme sami. Čeká nás celotáborová hra, sport, koupání a táboráky. Součástí je i vícedenní výlet.</p>
+                    </article>
+                </div>
+                 <div class="grid-2">
+                    <article>
+                        <h3>Ubytování a strava</h3>
+                        <p>Bydlet se bude po dvou v podsadových stanech. Jídlo je pětkrát denně z naší polní kuchyně.</p>
+                    </article>
+                    <img src="images/foto4.jpg" alt="Letní tábor ilustrační foto 2" class="camp-image">
+                </div>
+                <article>
+                    <h3>Dokumenty a vybavení</h3>
+                    <p>Potřebné dokumenty jsou stejné jako na zimní tábor. Seznam vybavení najdete <a href="dokumenty/DSV_tabor.pdf">zde</a>.</p>
+                </article>
+                <article>
+                    <h3>Kontakt na tábor</h3>
+                    <p>Adresa: Letní tábor Kočovníci, Dolní Krupá u Havlíčkova Brodu, 582 71. Telefon pro naléhavé případy: 731 261 239.</p>
+                </article>
+                 <article>
+                    <h3>Platba</h3>
+                    <p>Účastnický poplatek <strong>3500 Kč (členové)</strong> nebo <strong>4000 Kč (ostatní)</strong> pošlete na účet 2700230041/2010.</p>
+                </article>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeKFs13gvTU8IspRz0Wkk7L3R6P99qyVIttWHegZCHrK_cc-g/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Načítání…</iframe>
+            </section>
+        </div>
     </main>
 
     <footer>
@@ -106,10 +169,9 @@
             <a href="dino.html" aria-label="dino game" style="position: absolute; bottom: 10px; right: 10px; width: 50px; height: 50px;"></a>
         </div>
     </footer>
-    <!-- Data a skripty -->
-    <script src="taboryData.js"></script>
-    <script src="themeToggle.js"></script>
-    <script src="main.js"></script>
-</body>
 
+    <script src="themeToggle.js"></script>
+    <script src="campToggle.js"></script>
+    <script src="scrollAnimation.js"></script>
+</body>
 </html>
