@@ -18,12 +18,16 @@
         body {
             margin: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
             min-height: 100vh;
             background-color: #f7f7f7;
             font-family: 'Courier New', Courier, monospace;
-            overflow: hidden;
+        }
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         #game-container {
             position: relative;
@@ -114,14 +118,15 @@
 
 
 
-
-    <div id="game-container">
-        <div id="score">0</div>
-        <div id="dino"></div>
-        <div id="message">
-            Stiskni mezerník pro start
+    <main>
+        <div id="game-container">
+            <div id="score">0</div>
+            <div id="dino"></div>
+            <div id="message">
+                Stiskni mezerník pro start
+            </div>
         </div>
-    </div>
+    </main>
 
     <script>
         const dino = document.getElementById('dino');
