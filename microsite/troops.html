@@ -105,7 +105,7 @@
 
         <section id="vedouci">
             <h2>Vedoucí</h2>
-            <div class="cards-grid">
+            <div class="cards-grid" id="vedouci-grid">
                 <article class="card">
                     <img src="images/foto1.jpg" alt="Marcel Šíp">
                     <div>
@@ -233,6 +233,36 @@
 
     <script src="themeToggle.js"></script>
     <script src="main.js"></script>
+    <style>
+    /* 4-column grid for Vedoucí section */
+    #vedouci-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+    /* Center last row if not full */
+    #vedouci-grid.center-last-row {
+        justify-items: center;
+    }
+    #vedouci-grid .card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    #vedouci-grid .card.centered {
+        grid-column: span 1;
+    }
+    /* Responsive: 2 columns on small screens */
+    @media (max-width: 900px) {
+        #vedouci-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 600px) {
+        #vedouci-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('#vedouci .card');
@@ -260,6 +290,33 @@
                     });
                 }
             });
+
+            // Center last row if not full (1, 2, or 3 cards)
+            const vedouciGrid = document.getElementById('vedouci-grid');
+            if (vedouciGrid) {
+                const allCards = vedouciGrid.querySelectorAll('.card');
+                const perRow = 4;
+                const total = allCards.length;
+                const lastRowCount = total % perRow === 0 ? perRow : total % perRow;
+                if (lastRowCount && lastRowCount < perRow) {
+                    vedouciGrid.classList.add('center-last-row');
+                    // Remove any previous centering
+                    allCards.forEach(card => card.classList.remove('centered'));
+                    // Calculate start index of last row
+                    const start = total - lastRowCount;
+                    // For centering, add empty grid columns before the first card in last row
+                    // Remove any previous empty elements
+                    vedouciGrid.querySelectorAll('.empty-cell').forEach(e => e.remove());
+                    // Insert empty cells at the start of last row
+                    for (let i = 0; i < Math.floor((perRow - lastRowCount) / 2); i++) {
+                        const empty = document.createElement('div');
+                        empty.className = 'empty-cell';
+                        empty.style.gridColumn = 'auto';
+                        empty.style.visibility = 'hidden';
+                        vedouciGrid.insertBefore(empty, allCards[start]);
+                    }
+                }
+            }
 
             document.addEventListener('click', (e) => {
                 document.querySelectorAll('#vedouci .card.active').forEach(card => {
