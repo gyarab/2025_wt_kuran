@@ -70,6 +70,9 @@ body {
   background-color: var(--light-bg);
   color: var(--light-text);
   transition: background-color var(--transition), color var(--transition);
+
+
+
 }
 
 [data-theme="dark"] body {
